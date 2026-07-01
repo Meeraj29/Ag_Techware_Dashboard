@@ -1,16 +1,16 @@
-import { 
-  LayoutDashboard, 
-  Contact, 
-  ClipboardList, 
-  Briefcase, 
-  FileCheck, 
-  Ship, 
-  MapPin, 
-  Calculator, 
-  TrendingUp, 
+import {
+  LayoutDashboard,
+  Contact,
+  ClipboardList,
+  Briefcase,
+  FileCheck,
+  Ship,
+  MapPin,
+  Calculator,
+  TrendingUp,
   CreditCard,
   LineChart,
-  Users 
+  Users
 } from 'lucide-react';
 
 export const sidebarData = [
@@ -18,7 +18,7 @@ export const sidebarData = [
     title: "Main",
     items: [
       { name: "Dashboard", icon: LayoutDashboard, href: "/" },
-      { name: "Vendor List", icon: Contact, href: "/vendor-list" },
+      { name: "Vendor List", icon: Contact, href: "/dashboard/vendors" },
     ]
   },
   {
