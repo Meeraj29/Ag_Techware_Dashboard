@@ -2,7 +2,7 @@ import { Search, Settings, Bell, Menu } from "lucide-react";
 
 export default function NavBar({ onMenuClick }: { onMenuClick?: () => void }) {
   return (
-    <header className="flex h-16 shrink-0 items-center justify-between border-b border-gray-200 bg-white px-4 lg:px-8">
+    <header className="flex h-20 shrink-0 items-center justify-between border-b border-gray-200 bg-white shadow-lg px-4 lg:px-8 z-10 relative">
       {/* Left side: Mobile menu toggle + Search */}
       <div className="flex items-center flex-1 gap-4">
         <button

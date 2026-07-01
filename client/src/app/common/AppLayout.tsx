@@ -4,10 +4,10 @@ import SideBar from "./SideBar";
 import NavBar from "./NavBar";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
-export default function AppLayout({ 
-  children, 
-  defaultCollapsed = false 
-}: { 
+export default function AppLayout({
+  children,
+  defaultCollapsed = false
+}: {
   children: React.ReactNode;
   defaultCollapsed?: boolean;
 }) {
@@ -32,9 +32,8 @@ export default function AppLayout({
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 transform bg-white transition-all duration-300 ease-in-out lg:relative lg:translate-x-0 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } w-64 ${isCollapsed ? "lg:w-20" : "lg:w-64"}`}
+        className={`fixed inset-y-0 left-0 z-50 transform bg-white transition-all duration-300 ease-in-out lg:relative lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } w-64 ${isCollapsed ? "lg:w-20" : "lg:w-64"}`}
       >
         <SideBar
           onClose={() => setSidebarOpen(false)}
@@ -44,7 +43,7 @@ export default function AppLayout({
         {/* Desktop Collapse Toggle */}
         <button
           onClick={toggleCollapse}
-          className="absolute -right-5 top-10 cursor-pointer z-50 hidden h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 lg:flex text-gray-700 transition-transform hover:scale-105"
+          className="absolute -right-5 top-14 cursor-pointer z-50 hidden h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm hover:bg-gray-50 lg:flex text-gray-700 transition-transform hover:scale-105"
         >
           {isCollapsed ? (
             <PanelLeftOpen className="h-5 w-5" />
