@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 import "./globals.css";
 import AppLayout from "./common/AppLayout";
+import ReduxProvider from "./redux/ReduxProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +25,9 @@ export default async function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <body className={`${inter.className} h-full bg-white text-gray-900`}>
-        <AppLayout defaultCollapsed={isCollapsed}>{children}</AppLayout>
+        <ReduxProvider>
+          <AppLayout defaultCollapsed={isCollapsed}>{children}</AppLayout>
+        </ReduxProvider>
       </body>
     </html>
   );
