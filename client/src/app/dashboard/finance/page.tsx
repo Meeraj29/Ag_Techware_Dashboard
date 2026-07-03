@@ -1,9 +1,9 @@
 "use client";
-import FinanceOverview from "../components/finance/FinanceOverview";
-import CashFlowAnalysis from "../components/finance/CashFlowAnalysis";
-import PaymentDistribution from "../components/finance/PaymentDistribution";
-import FinanceTable from "../components/finance/FinanceTable";
-import RecentActivity from "../components/finance/RecentActivity";
+import FinanceOverview from "../../components/finance/FinanceOverview";
+import CashFlowAnalysis from "../../components/finance/CashFlowAnalysis";
+import PaymentDistribution from "../../components/finance/PaymentDistribution";
+import FinanceTable from "../../components/finance/FinanceTable";
+import RecentActivity from "../../components/finance/RecentActivity";
 
 export default function FinancePage() {
   return (

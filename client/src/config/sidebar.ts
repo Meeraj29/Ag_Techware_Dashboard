@@ -35,7 +35,7 @@ export const sidebarData = [
   {
     title: "Finance",
     items: [
-      { name: "Finance", icon: TrendingUp, href: "/finance" },
+      { name: "Finance", icon: TrendingUp, href: "/dashboard/finance" },
       { name: "Credit Control", icon: CreditCard, href: "/credit-control" },
     ]
   },
