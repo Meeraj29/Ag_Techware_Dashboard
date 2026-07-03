@@ -56,7 +56,7 @@ export default function AppLayout({
       {/* Main Content */}
       <div className="flex flex-1 flex-col overflow-hidden">
         <NavBar onMenuClick={() => setSidebarOpen(true)} />
-        <main className="flex-1 overflow-auto bg-gray-50 p-4">
+        <main className="flex-1 overflow-auto bg-gray-50">
           {children}
         </main>
       </div>
