@@ -7,11 +7,12 @@ import ReduxProvider from "./redux/ReduxProvider";
 
 const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
   title: "AG Techware",
-  description: "Dashboard",
+  description: "Logistics and supply chain management",
 };
 
 export default async function RootLayout({
@@ -23,8 +24,8 @@ export default async function RootLayout({
   const isCollapsed = cookieStore.get("agtech_sidebar_collapsed")?.value === "true";
 
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className={`${inter.className} h-full bg-white text-gray-900`}>
+    <html lang="en" className={`h-full antialiased ${inter.variable}`}>
+      <body className="h-full bg-white text-gray-900 font-sans">
         <ReduxProvider>
           <AppLayout defaultCollapsed={isCollapsed}>{children}</AppLayout>
         </ReduxProvider>

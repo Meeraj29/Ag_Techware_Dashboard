@@ -24,9 +24,9 @@ export const sidebarData = [
   {
     title: "Operations",
     items: [
-      { name: "Sales Management", icon: ClipboardList, href: "/sales-management" },
-      { name: "Jobs", icon: Briefcase, href: "/jobs" },
-      { name: "Clearance", icon: FileCheck, href: "/clearance" },
+      { name: "Sales Management", icon: ClipboardList, href: "/dashboard/sales" },
+      { name: "Jobs", icon: Briefcase, href: "/dashboard/jobs" },
+      { name: "Clearance", icon: FileCheck, href: "/dashboard/clearance" },
       { name: "Transportation", icon: Ship, href: "/transportation" },
       { name: "Tracking", icon: MapPin, href: "/tracking" },
       { name: "VGM Calculator", icon: Calculator, href: "/vgm-calculator" },

@@ -1,6 +1,8 @@
 import { Search, Settings, Bell, Menu } from "lucide-react";
+import Image from "next/image";
+import Logo from "../assets/Logo/agtechlogo.svg";
 
-export default function NavBar({ onMenuClick }: { onMenuClick?: () => void }) {
+export default function NavBar({ onMenuClick, showLogo }: { onMenuClick?: () => void; showLogo?: boolean }) {
   return (
     <header className="flex h-20 shrink-0 items-center justify-between border-b border-gray-200 bg-white shadow-lg px-4 lg:px-8 z-10 relative">
       {/* Left side: Mobile menu toggle + Search */}
@@ -12,13 +14,19 @@ export default function NavBar({ onMenuClick }: { onMenuClick?: () => void }) {
           <Menu className="h-6 w-6" />
         </button>
 
-        <div className="relative w-full max-w-md lg:max-w-xl">
+        {showLogo && (
+          <div className="hidden lg:flex items-center mr-2">
+            <Image src={Logo} alt="AG Techware Logo" width={160} height={32} className="w-auto h-8 object-contain" />
+          </div>
+        )}
+
+        <div className="relative w-full max-w-5xl">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <Search className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
           </div>
           <input
             type="text"
-            className="block w-full rounded-full border border-gray-200 bg-gray-50 py-2 sm:py-2.5 pl-9 sm:pl-10 pr-4 text-[13px] sm:text-sm text-gray-900 placeholder:text-gray-500 focus:border-primary focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary transition-all"
+            className="block w-full rounded-lg border border-gray-200 bg-gray-50 py-2 sm:py-2.5 pl-9 sm:pl-10 pr-4 text-[13px] sm:text-sm text-gray-900 placeholder:text-gray-500 focus:border-primary focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary transition-all"
             placeholder="Search shipments, jobs..."
           />
         </div>
@@ -26,10 +34,10 @@ export default function NavBar({ onMenuClick }: { onMenuClick?: () => void }) {
 
       {/* Right side: Actions & Profile */}
       <div className="flex items-center gap-3 sm:gap-5">
-        <button className="rounded-full p-2.5 text-gray-600 hover:bg-gray-100 transition-colors">
+        <button className="rounded-full p-2.5 cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors">
           <Settings className="h-5 w-5" />
         </button>
-        <button className="rounded-full p-2.5 text-gray-600 hover:bg-gray-100 transition-colors">
+        <button className="rounded-full p-2.5 cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors">
           <Bell className="h-5 w-5" />
         </button>
         <div className="flex items-center gap-3 pl-2 sm:pl-4 border-l border-gray-200">

@@ -9,18 +9,19 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-white shadow-sm hover:bg-primary/90",
         gradient: "bg-gradiate text-white shadow-sm hover:opacity-90",
-        outline: "border border-primary text-primary bg-transparent hover:bg-primary/5",
+        outline: "border-2 border-primary text-primary bg-transparent hover:bg-primary/5",
+        dangerOutline: "border border-red-500 text-red-600 bg-white hover:bg-red-50 shadow-sm",
         ghost: "hover:bg-gray-100 hover:text-gray-900 text-gray-700",
       },
       size: {
-        default: "h-10 px-6 py-2",
+        default: "h-13 px-6 py-3",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-11 rounded-lg px-8",
         icon: "h-10 w-10",
       },
       layout: {
         default: "flex-row gap-2",
-        stacked: "flex-col gap-2.5 h-auto py-5 px-6 rounded-xl min-w-[130px]", 
+        stacked: "flex-col gap-2.5 h-auto py-5 px-6 rounded-xl min-w-[130px]",
       }
     },
     defaultVariants: {
@@ -33,17 +34,17 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-    icon?: React.ElementType;
-    iconPosition?: "left" | "right" | "top";
+  VariantProps<typeof buttonVariants> {
+  icon?: React.ElementType;
+  iconPosition?: "left" | "right" | "top";
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, layout, icon: Icon, iconPosition = "left", children, ...props }, ref) => {
-    
+
     // Automatically use stacked layout if iconPosition is top
     const computedLayout = iconPosition === "top" ? "stacked" : layout;
-    
+
     return (
       <button
         className={cn(buttonVariants({ variant, size, layout: computedLayout, className }))}

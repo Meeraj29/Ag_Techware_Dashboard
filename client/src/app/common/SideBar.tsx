@@ -15,17 +15,17 @@ export default function SideBar({
   const pathname = usePathname();
 
   return (
-    <div className="flex h-full flex-col border-r border-gray-200 bg-white shadow-[10px_0_24px_rgba(0,0,0,0.06)] overflow-hidden relative z-20">
+    <div className="flex h-full flex-col border-r border-gray-200 bg-white shadow-[10px_0_24px_rgba(0,0,0,0.06)] overflow-hidden relative z-20 ">
       {/* Logo Area */}
       <div className={`flex h-20 items-center border-b border-gray-100 shrink-0 px-6 ${isCollapsed ? 'lg:justify-center lg:px-2' : ''}`}>
         <span className={`text-xl font-extrabold text-primary italic tracking-tight ${isCollapsed ? 'hidden lg:block' : 'hidden'}`}>
           AG
         </span>
-        <Image src={agtechLogo} alt="AG Techware Logo" className={`h-8 w-auto min-w-[120px] ${isCollapsed ? 'lg:hidden' : ''}`} />
+        <Image src={agtechLogo} alt="AG Techware Logo" className={`h-8 w-auto min-w-32 ${isCollapsed ? 'lg:hidden' : ''}`} />
       </div>
 
       {/* Nav Links */}
-      <div className="flex-1 overflow-y-auto py-6 overflow-x-hidden">
+      <div className="flex-1 overflow-y-auto py-2 overflow-x-hidden scrollbar-hide">
         {sidebarData.map((section, idx) => (
           <div key={idx} className="mb-6">
             <h3 className={`mb-3 px-6 text-[11px] font-bold uppercase tracking-wider text-gray-500 whitespace-nowrap ${isCollapsed ? 'lg:hidden' : ''}`}>
@@ -38,7 +38,9 @@ export default function SideBar({
             )}
             <ul className={`space-y-1 px-4 ${isCollapsed ? 'lg:px-3' : ''}`}>
               {section.items.map((item) => {
-                const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
+                const isActive = item.href === '/'
+                  ? pathname === '/'
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`);
                 const Icon = item.icon;
                 return (
                   <li key={item.name}>
