@@ -17,8 +17,9 @@ export default function SideBar({
 	return (
 		<div className="flex h-full flex-col border-r border-gray-200 bg-white shadow-[10px_0_24px_rgba(0,0,0,0.06)] overflow-hidden relative z-20 ">
 			{/* Logo Area */}
-			<div
-				className={`flex h-20 items-center border-b border-gray-100 shrink-0 px-6 ${isCollapsed ? "lg:justify-center lg:px-2" : ""}`}
+			<Link
+				href="/"
+				className={`flex h-20 items-center border-b border-gray-100 shrink-0 px-6 cursor-pointer ${isCollapsed ? "lg:justify-center lg:px-2" : ""}`}
 			>
 				<span
 					className={`text-xl font-extrabold text-primary italic tracking-tight ${isCollapsed ? "hidden lg:block" : "hidden"}`}
@@ -30,7 +31,7 @@ export default function SideBar({
 					alt="AG Techware Logo"
 					className={`h-8 w-auto min-w-32 ${isCollapsed ? "lg:hidden" : ""}`}
 				/>
-			</div>
+			</Link>
 
 			{/* Nav Links */}
 			<div className="flex-1 overflow-y-auto py-2 overflow-x-hidden scrollbar-hide">

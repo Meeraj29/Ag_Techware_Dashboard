@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { Search, Settings, Bell, Menu } from "lucide-react";
 import Logo from "../assets/Logo/agtechlogo.svg";
@@ -21,7 +22,7 @@ export default function NavBar({
 				</button>
 
 				{showLogo && (
-					<div className="hidden lg:flex items-center mr-2">
+					<Link href="/" className="hidden lg:flex items-center mr-2 cursor-pointer">
 						<Image
 							src={Logo}
 							alt="AG Techware Logo"
@@ -29,7 +30,7 @@ export default function NavBar({
 							height={32}
 							className="w-auto h-8 object-contain"
 						/>
-					</div>
+					</Link>
 				)}
 
 				<div className="relative w-full max-w-5xl">

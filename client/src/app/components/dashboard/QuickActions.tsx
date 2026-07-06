@@ -10,7 +10,7 @@ export default function QuickActions() {
 	];
 
 	return (
-		<div className="bg-[#0863BC] rounded-xl p-6 shadow-sm col-span-1 flex flex-col justify-between h-64">
+		<div className="bg-[#0863BC] rounded-xl p-6 shadow-sm col-span-1 flex flex-col justify-between h-64 lg:h-72">
 			<h2 className="text-lg font-semibold text-white mb-4">Quick Actions</h2>
 			<div className="grid grid-cols-2 gap-3 flex-1">
 				{actions.map((action, idx) => (
