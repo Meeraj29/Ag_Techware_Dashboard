@@ -6,30 +6,31 @@ import AppLayout from "./common/AppLayout";
 import ReduxProvider from "./redux/ReduxProvider";
 
 const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+	subsets: ["latin"],
+	variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "AG Techware",
-  description: "Logistics and supply chain management",
+	title: "AG Techware",
+	description: "Logistics and supply chain management",
 };
 
 export default async function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const isCollapsed = cookieStore.get("agtech_sidebar_collapsed")?.value === "true";
+	const cookieStore = await cookies();
+	const isCollapsed =
+		cookieStore.get("agtech_sidebar_collapsed")?.value === "true";
 
-  return (
-    <html lang="en" className={`h-full antialiased ${inter.variable}`}>
-      <body className="h-full bg-white text-gray-900 font-sans">
-        <ReduxProvider>
-          <AppLayout defaultCollapsed={isCollapsed}>{children}</AppLayout>
-        </ReduxProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en" className={`h-full antialiased ${inter.variable}`}>
+			<body className="h-full bg-white text-gray-900 font-sans">
+				<ReduxProvider>
+					<AppLayout defaultCollapsed={isCollapsed}>{children}</AppLayout>
+				</ReduxProvider>
+			</body>
+		</html>
+	);
 }

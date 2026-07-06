@@ -11,30 +11,30 @@ import SalesRepresentativeTab from "@/app/components/vendors/create/tabs/SalesRe
 import CreditControlDetailsTab from "@/app/components/vendors/create/tabs/CreditControlDetailsTab";
 
 export const TAB_ORDER = [
-  "Overview",
-  "Address",
-  "Contacts",
-  "KYC & Documents",
-  "Sales Representative",
-  "Credit Control Details"
+	"Overview",
+	"Address",
+	"Contacts",
+	"KYC & Documents",
+	"Sales Representative",
+	"Credit Control Details",
 ];
 
 export default function CreateVendorPage() {
-  const [activeTab, setActiveTab] = useState(TAB_ORDER[0]);
+	const [activeTab, setActiveTab] = useState(TAB_ORDER[0]);
 
-  return (
-    <div className="p-4 bg-gray-50 min-h-full ">
-      <CreateVendorHeader activeTab={activeTab} setActiveTab={setActiveTab} />
+	return (
+		<div className="p-4 bg-gray-50 min-h-full ">
+			<CreateVendorHeader activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <div className="flex flex-col">
-        <CreateVendorTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        {activeTab === "Overview" && <OverviewTab />}
-        {activeTab === "Address" && <AddressTab />}
-        {activeTab === "Contacts" && <ContactsTab />}
-        {activeTab === "KYC & Documents" && <KYCDocumentsTab />}
-        {activeTab === "Sales Representative" && <SalesRepresentativeTab />}
-        {activeTab === "Credit Control Details" && <CreditControlDetailsTab />}
-      </div>
-    </div>
-  );
+			<div className="flex flex-col">
+				<CreateVendorTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+				{activeTab === "Overview" && <OverviewTab />}
+				{activeTab === "Address" && <AddressTab />}
+				{activeTab === "Contacts" && <ContactsTab />}
+				{activeTab === "KYC & Documents" && <KYCDocumentsTab />}
+				{activeTab === "Sales Representative" && <SalesRepresentativeTab />}
+				{activeTab === "Credit Control Details" && <CreditControlDetailsTab />}
+			</div>
+		</div>
+	);
 }

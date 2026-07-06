@@ -1,62 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: #044890;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-primary: #044890;
+	--font-sans:
+		var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @utility bg-gradiate {
-  background: linear-gradient(90deg, #0863BD 0%, #04458B 100%);
+	background: linear-gradient(90deg, #0863bd 0%, #04458b 100%);
 }
 
 @utility scrollbar-hide {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
 
-  /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari and Opera */
-  }
+	/* Firefox */
+	&::-webkit-scrollbar {
+		display: none;
+		/* Chrome, Safari and Opera */
+	}
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+	background: var(--background);
+	color: var(--foreground);
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
 @utility scrollbar-hide {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
 
-  /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari and Opera */
-  }
+	/* Firefox */
+	&::-webkit-scrollbar {
+		display: none;
+		/* Chrome, Safari and Opera */
+	}
 }

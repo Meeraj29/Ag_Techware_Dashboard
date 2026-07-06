@@ -16,25 +16,24 @@ import fleetReducer from "./features/fleetSlice";
 import dashboardReducer from "./features/dashboard/dashboardSlice";
 
 export const store = configureStore({
-  reducer: {
-    vendor: vendorReducer,
-    vendorForm: vendorFormReducer,
-    sales: salesReducer,
-    jobs: jobsReducer,
-    clearance: clearanceReducer,
-    transportation: transportationReducer,
-    tracking: trackingReducer,
-    vgm: vgmReducer,
-    finance: financeReducer,
-    creditControl: creditControlReducer,
-    reports: reportsReducer,
-    customers: customersReducer,
-    customerDetail: customerDetailReducer,
-    fleet: fleetReducer,
-    dashboard: dashboardReducer,
-  },
+	reducer: {
+		vendor: vendorReducer,
+		vendorForm: vendorFormReducer,
+		sales: salesReducer,
+		jobs: jobsReducer,
+		clearance: clearanceReducer,
+		transportation: transportationReducer,
+		tracking: trackingReducer,
+		vgm: vgmReducer,
+		finance: financeReducer,
+		creditControl: creditControlReducer,
+		reports: reportsReducer,
+		customers: customersReducer,
+		customerDetail: customerDetailReducer,
+		fleet: fleetReducer,
+		dashboard: dashboardReducer,
+	},
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
