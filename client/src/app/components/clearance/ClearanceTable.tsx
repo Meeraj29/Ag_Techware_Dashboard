@@ -62,41 +62,41 @@ export default function ClearanceTable() {
         </thead>
         <tbody className="divide-y divide-gray-100 bg-white">
           {filteredJobs.map((job, index) => (
-            <tr 
-              key={index} 
+            <tr
+              key={index}
               onClick={() => router.push(`/dashboard/clearance/${encodeURIComponent(job.id)}`)}
               className="hover:bg-gray-50/50 transition-colors cursor-pointer"
             >
               <td className="px-6 py-4">
-                <span className="text-sm font-semibold text-[#075FB7]">{job.id}</span>
+                <span className="text-base font-medium text-[#075FB7]">{job.id}</span>
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-semibold text-gray-900">{job.customer}</span>
+                <span className="text-base font-medium text-gray-900">{job.customer}</span>
               </td>
               <td className="px-6 py-4">
-                <span className={`inline-flex items-center gap-1.5 px-2.5 py-2 rounded-full text-xs font-medium ${job.type === "Export" ? "bg-[#3525CD4D] text-[#3525CD]" : "bg-[#0548904D] text-[#054890]"
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-2 rounded-full text-sm font-medium ${job.type === "Export" ? "bg-[#3525CD4D] text-[#3525CD]" : "bg-[#0548904D] text-[#054890]"
                   }`}>
                   {job.type === "Export" ? <Ship className="w-3 h-3" /> : <Anchor className="w-3 h-3" />}
                   {job.type}
                 </span>
               </td>
               <td className="px-6 py-4">
-                <span className="text-xs font-medium text-gray-500">{job.port}</span>
+                <span className="text-base font-medium text-gray-500">{job.port}</span>
               </td>
 
               {primaryTab !== "Alerts" && (
                 <td className="px-6 py-4">
-                  <span className="text-xs font-medium text-gray-500">{job.stage}</span>
+                  <span className="text-base font-medium text-gray-500">{job.stage}</span>
                 </td>
               )}
 
-              <td className="px-6 py-4">
+              <td className="px-6 py-4 ">
                 {getStatusBadge(job.status)}
               </td>
 
               {primaryTab === "Alerts" && (
                 <td className="px-6 py-4">
-                  <span className={`text-xs font-bold ${job.alertType === "Missing Documents" ? "text-[#BA1A1A]" : "text-[#64748B]"}`}>
+                  <span className={`text-base font-medium ${job.alertType === "Missing Documents" ? "text-[#BA1A1A]" : "text-[#64748B]"}`}>
                     {job.alertType}
                   </span>
                 </td>
