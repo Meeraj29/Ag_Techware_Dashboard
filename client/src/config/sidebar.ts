@@ -27,17 +27,16 @@ export const sidebarData = [
       { name: "Sales Management", icon: ClipboardList, href: "/sales-management" },
       { name: "Jobs", icon: Briefcase, href: "/jobs" },
       { name: "Clearance", icon: FileCheck, href: "/clearance" },
-      { name: "Transportation", icon: Ship, href: "/transportation" },
-      { name: "Tracking", icon: MapPin, href: "/tracking" },
-      { name: "VGM Calculator", icon: Calculator, href: "/vgm-calculator" },
+      { name: "Transportation", icon: Ship, href: "/dashboard/transportation" },
+      { name: "Tracking", icon: MapPin, href: "/dashboard/tracking" },
+      { name: "VGM Calculator", icon: Calculator, href: "/dashboard/vgm-calculator" },
     ]
   },
   {
     title: "Finance",
     items: [
-      { name: "Finance", icon: TrendingUp, href: "/finance" },
-      { name: "Credit Control", icon: CreditCard, href: "/dashboard/credit-control" },
-
+      { name: "Finance", icon: TrendingUp, href: "/dashboard/finance" },
+      { name: "Credit Control", icon: CreditCard, href: "/credit-control" },
     ]
   },
   {
