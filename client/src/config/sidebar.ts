@@ -36,14 +36,22 @@ export const sidebarData = [
     title: "Finance",
     items: [
       { name: "Finance", icon: TrendingUp, href: "/dashboard/finance" },
-      { name: "Credit Control", icon: CreditCard, href: "/credit-control" },
+      { name: "Credit Control", icon: CreditCard, href: "/dashboard/credit-control" },
+
     ]
   },
   {
     title: "Analytics",
     items: [
-      { name: "Reports", icon: LineChart, href: "/reports" },
-      { name: "Customers", icon: Users, href: "/customers" },
+      { name: "Reports", icon: LineChart, href: "/dashboard/reports" },
+      { name: "Customers", icon: Users, href: "/dashboard/customers" },
+
+    ]
+  },
+  {
+    title: "Fleet",
+    items: [
+      { name: "Fleet Management", icon: Ship, href: "/dashboard/fleet-management" },
     ]
   }
 ];

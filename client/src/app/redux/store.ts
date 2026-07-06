@@ -8,6 +8,12 @@ import transportationReducer from "./features/transportationSlice";
 import trackingReducer from "./features/trackingSlice";
 import vgmReducer from "./features/vgmSlice";
 import financeReducer from "./features/financeSlice";
+import creditControlReducer from "./features/creditControlSlice";
+import reportsReducer from "./features/reportsSlice";
+import customersReducer from "./features/customersSlice";
+import customerDetailReducer from "./features/customerDetailSlice";
+import fleetReducer from "./features/fleetSlice";
+import dashboardReducer from "./features/dashboard/dashboardSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,8 +26,15 @@ export const store = configureStore({
     tracking: trackingReducer,
     vgm: vgmReducer,
     finance: financeReducer,
+    creditControl: creditControlReducer,
+    reports: reportsReducer,
+    customers: customersReducer,
+    customerDetail: customerDetailReducer,
+    fleet: fleetReducer,
+    dashboard: dashboardReducer,
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+

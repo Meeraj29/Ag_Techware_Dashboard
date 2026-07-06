@@ -1,9 +1,17 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import SideBar from "./SideBar";
 import NavBar from "./NavBar";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
-import { usePathname } from "next/navigation";
+
+/**
+ * Routes that should render as full-page (no sidebar).
+ * Sidebar is hidden and content spans full width.
+ */
+const FULL_PAGE_ROUTES = [
+  "/dashboard/customers/create",
+];
 
 export default function AppLayout({
   children,
@@ -12,9 +20,12 @@ export default function AppLayout({
   children: React.ReactNode;
   defaultCollapsed?: boolean;
 }) {
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
+
   const pathname = usePathname();
+  const isFullPage = FULL_PAGE_ROUTES.some((route) => pathname.startsWith(route));
 
   const hiddenSidebarRoutes = [
     "/dashboard/vendors/create",
@@ -27,8 +38,20 @@ export default function AppLayout({
   const toggleCollapse = () => {
     const newState = !isCollapsed;
     setIsCollapsed(newState);
-    document.cookie = `agtech_sidebar_collapsed=${newState}; path=/; max-age=31536000`; // 1 year
+    document.cookie = `agtech_sidebar_collapsed=${newState}; path=/; max-age=31536000`;
   };
+
+  if (isFullPage) {
+    return (
+      <div className="flex h-screen flex-col bg-white">
+        {/* NavBar only – no sidebar, logo shown in navbar */}
+        <NavBar showLogo={true} />
+        <main className="flex-1 overflow-auto">
+          {children}
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen bg-white">

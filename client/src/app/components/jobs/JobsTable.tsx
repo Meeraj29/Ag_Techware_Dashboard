@@ -45,20 +45,20 @@ export default function JobsTable({ activeTab }: { activeTab: "All jobs" | "Acti
               onClick={() => router.push(`/dashboard/jobs/${encodeURIComponent(job._id)}`)}
               className={`border-b border-gray-50 hover:bg-gray-100 transition-colors cursor-pointer ${index % 2 !== 0 ? 'bg-[#F8F8F8]' : 'bg-white'}`}
             >
-              <td className="py-4 px-6">
+              <td className="py-4 px-6 whitespace-nowrap">
                 <p className="text-base font-medium text-black">{job._id}</p>
                 {isActionRequired && (
                   <p className="text-xs text-gray-500 mt-0.5">Ref: PO-{4402 + index}</p>
                 )}
               </td>
 
-              <td className="py-4 px-6">
+              <td className="py-4 px-6 whitespace-nowrap">
                 <p className="text-base font-semibold text-gray-900">
                   {isActionRequired ? job.destination : job.customer}
                 </p>
               </td>
 
-              <td className="py-4 px-6">
+              <td className="py-4 px-6 whitespace-nowrap">
                 {isActionRequired ? (
                   <p className={`text-sm font-medium ${job.urgency === 'Critical' ? 'text-[#E44444]' : job.urgency === 'Medium' ? 'text-[#D97706]' : 'text-[#000000B2]'}`}>
                     {job.issuesType}
@@ -68,7 +68,7 @@ export default function JobsTable({ activeTab }: { activeTab: "All jobs" | "Acti
                 )}
               </td>
 
-              <td className="py-4 px-6">
+              <td className="py-4 px-6 whitespace-nowrap">
                 {isActionRequired ? (
                   <UrgencyBadge urgency={job.urgency} />
                 ) : (
@@ -83,11 +83,11 @@ export default function JobsTable({ activeTab }: { activeTab: "All jobs" | "Acti
 
               {!isActionRequired && (
                 <>
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-6 whitespace-nowrap">
                     <StatusText status={job.status} />
                   </td>
 
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-6 whitespace-nowrap">
                     <p className="text-base font-medium text-black">
                       {job.eta.time} <span className="font-medium text-xs text-black">{job.eta.date}</span>
                     </p>
@@ -97,13 +97,13 @@ export default function JobsTable({ activeTab }: { activeTab: "All jobs" | "Acti
                     </div>
                   </td>
 
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-6 whitespace-nowrap">
                     <PriorityBadge priority={job.priority} />
                   </td>
                 </>
               )}
 
-              <td className="py-4 px-6">
+              <td className="py-4 px-6 whitespace-nowrap">
                 {isActionRequired ? (
                   <ActionButton
                     label={job.issuesType.includes('Missing') || job.issuesType.includes('Customs') ? 'Upload' : job.issuesType.includes('Damaged') ? 'Contact' : 'Review'}

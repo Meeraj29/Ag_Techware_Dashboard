@@ -18,49 +18,49 @@ export default function JobDetailsHeader({ job, isClearance = false }: { job: Jo
 
   return (
     <>
-      <div className="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center gap-3">
+      <div className="flex-1 flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-wrap items-center gap-3">
             <h1 className="text-xl font-medium text-gray-900">Job ID {job._id}</h1>
             <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-[#FEF7E0] text-[#E37400]">
               {job.status}
             </span>
           </div>
-          <div className="flex items-center gap-3 text-[13px] text-gray-600 font-medium">
-            <p>Customer: <span className="font-bold text-gray-900">{job.customer}</span></p>
-            <div className="w-px h-3 bg-gray-300"></div>
-            <p>Priority: <span className={`font-bold ${job.priority === 'Critical' || job.priority === 'High' ? 'text-[#C5221F]' : 'text-gray-900'}`}>{job.priority}</span></p>
-            <div className="w-px h-3 bg-gray-300"></div>
-            <CategoryBadge category={job.category} />
+          <div className="flex flex-wrap items-center gap-y-2 gap-x-3 text-[13px] text-gray-600 font-medium">
+            <p className="whitespace-nowrap">Customer: <span className="font-bold text-gray-900">{job.customer}</span></p>
+            <div className="hidden sm:block w-px h-3 bg-gray-300"></div>
+            <p className="whitespace-nowrap">Priority: <span className={`font-bold ${job.priority === 'Critical' || job.priority === 'High' ? 'text-[#C5221F]' : 'text-gray-900'}`}>{job.priority}</span></p>
+            <div className="hidden sm:block w-px h-3 bg-gray-300"></div>
+            <div className="whitespace-nowrap mt-3 md:mt-0"><CategoryBadge category={job.category} /></div>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Button 
-            variant="outline" 
+        <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto">
+          <Button
+            variant="outline"
             onClick={() => setIsPriorityModalOpen(true)}
-            className="px-4 py-2 h-auto rounded-lg border cursor-pointer border-[#075FB7] text-[#075FB7] text-[13px] font-semibold hover:bg-blue-50 transition-colors"
+            className="flex-1 sm:flex-none px-4 py-2 h-auto rounded-lg border cursor-pointer border-[#075FB7] text-[#075FB7] text-[13px] font-semibold hover:bg-blue-50 transition-colors whitespace-nowrap"
           >
             Update Priority
           </Button>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={() => setIsStatusModalOpen(true)}
-            className="px-4 py-2 h-auto rounded-lg border cursor-pointer border-[#075FB7] text-[#075FB7] text-[13px] font-semibold hover:bg-blue-50 transition-colors"
+            className="flex-1 sm:flex-none px-4 py-2 h-auto rounded-lg border cursor-pointer border-[#075FB7] text-[#075FB7] text-[13px] font-semibold hover:bg-blue-50 transition-colors whitespace-nowrap"
           >
             Update Status
           </Button>
-          <Button 
-            variant="dangerOutline" 
+          <Button
+            variant="dangerOutline"
             onClick={() => setIsRaiseIssueModalOpen(true)}
-            className="px-4 py-2 h-auto rounded-lg cursor-pointer border border-red-500 text-red-500 text-[13px] font-semibold hover:bg-red-50 transition-colors"
+            className="flex-1 sm:flex-none px-4 py-2 h-auto rounded-lg cursor-pointer border border-red-500 text-red-500 text-[13px] font-semibold hover:bg-red-50 transition-colors whitespace-nowrap"
           >
             Raise Issue
           </Button>
-          <Button 
-            variant="gradient" 
+          <Button
+            variant="gradient"
             onClick={() => setIsUploadModalOpen(true)}
-            className="px-6 py-2 h-auto rounded-lg cursor-pointer text-white text-[13px] font-semibold hover:bg-[#075FB7]/90 transition-colors"
+            className="flex-1 sm:flex-none px-6 py-2 h-auto rounded-lg cursor-pointer text-white text-[13px] font-semibold hover:bg-[#075FB7]/90 transition-colors whitespace-nowrap"
           >
             Upload Documents
           </Button>
@@ -73,7 +73,7 @@ export default function JobDetailsHeader({ job, isClearance = false }: { job: Jo
         jobId={job._id}
         currentPriority={job.priority}
       />
-      
+
       <UpdateStatusModal
         isOpen={isStatusModalOpen}
         onClose={() => setIsStatusModalOpen(false)}

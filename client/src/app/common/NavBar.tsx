@@ -1,11 +1,11 @@
-import { Search, Settings, Bell, Menu } from "lucide-react";
 import Image from "next/image";
+import { Search, Settings, Bell, Menu } from "lucide-react";
 import Logo from "../assets/Logo/agtechlogo.svg";
 
 export default function NavBar({ onMenuClick, showLogo }: { onMenuClick?: () => void; showLogo?: boolean }) {
   return (
     <header className="flex h-20 shrink-0 items-center justify-between border-b border-gray-200 bg-white shadow-lg px-4 lg:px-8 z-10 relative">
-      {/* Left side: Mobile menu toggle + Search */}
+      {/* Left side: Logo (full-page only) + Mobile menu toggle + Search */}
       <div className="flex items-center flex-1 gap-4">
         <button
           onClick={onMenuClick}
