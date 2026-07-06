@@ -29,8 +29,8 @@ export default function PurchaseStats() {
 		},
 		{
 			title: "On-Time Delivery rate",
-			subTitle: "14 ACTIONS REQUIRED",
-			subTitleClass: "text-red-600 font-semibold",
+			subTitle: " ACTIONS REQUIRED",
+			subTitleClass: "text-[#880000] font-medium",
 			value: purchaseStats.onTimeDeliveryRate.value,
 			icon: ShieldAlert,
 			badge: purchaseStats.onTimeDeliveryRate.badge,
@@ -38,7 +38,7 @@ export default function PurchaseStats() {
 		},
 		{
 			title: "ACTIVE VENDORS",
-			subTitle: `${purchaseStats.activeVendors.value} Across Regions`,
+			subTitle: `Across Regions`,
 			value: purchaseStats.activeVendors.value,
 			icon: Users,
 			badge: purchaseStats.activeVendors.badge,
@@ -66,23 +66,22 @@ export default function PurchaseStats() {
 						<div className="flex flex-col justify-between">
 							<div>
 								<div className="flex items-baseline gap-1.5">
-									<p className="text-3xl font-bold tracking-tight text-gray-900 leading-none">
+									<p className="text-[26px] font-semibold tracking-tight text-black leading-none">
 										{card.value}
 									</p>
 									{(card.title === "On-Time Delivery rate" ||
 										card.title === "ACTIVE VENDORS") && (
-										<span
-											className={`text-[10px] uppercase tracking-wide ${
-												card.subTitleClass || "text-gray-400 font-bold"
-											}`}
-										>
-											{card.subTitle}
-										</span>
-									)}
+											<span
+												className={`text-[15px] uppercase tracking-wide ${card.subTitleClass || "text-black font-medium"
+													}`}
+											>
+												{card.subTitle}
+											</span>
+										)}
 								</div>
-								<p className="mt-2 text-xs font-bold tracking-wide text-gray-500 uppercase leading-tight">
+								<p className="mt-2 text-[14px] font-medium tracking-wide text-black uppercase leading-tight">
 									{card.title === "On-Time Delivery rate" ||
-									card.title === "ACTIVE VENDORS"
+										card.title === "ACTIVE VENDORS"
 										? card.title
 										: `${card.title} ${card.subTitle || ""}`}
 								</p>
@@ -95,7 +94,7 @@ export default function PurchaseStats() {
 							</div>
 
 							<span
-								className={`rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide ${card.badgeClass}`}
+								className={`rounded-full px-2 py-0.5 text-[14px] font-bold tracking-wide ${card.badgeClass}`}
 							>
 								{card.badge}
 							</span>

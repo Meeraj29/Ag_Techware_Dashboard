@@ -11,52 +11,40 @@ export function ClearanceStatus() {
 	);
 
 	return (
-		<div className="bg-white rounded-[24px] p-6 shadow-sm flex flex-col h-[400px]">
-			<h2 className="font-bold text-lg text-gray-800 mb-6">Clearance Status</h2>
+		<div className="bg-white rounded-[24px] p-6 shadow-sm flex flex-col min-h-[350px] lg:h-[400px]">
+			<h2 className="font-semibold text-[20px] text-[#191B24] mb-6 whitespace-nowrap">Clearance Status</h2>
 			<div className="flex-1 flex flex-col xl:flex-row items-center justify-between gap-4 xl:gap-6 relative min-h-0 w-full">
-				<div className="w-[150px] h-[150px] shrink-0 relative">
+				<div className="w-[160px] h-[160px] shrink-0 relative">
 					<ResponsiveContainer width="100%" height="100%">
 						<PieChart>
 							<Pie
-								data={data}
+								data={[{ value: 100 }]}
 								cx="50%"
 								cy="50%"
-								innerRadius={50}
-								outerRadius={70}
+								innerRadius={60}
+								outerRadius={76}
 								paddingAngle={0}
 								dataKey="value"
 								stroke="none"
 							>
-								{data.map((entry, index) => (
-									<Cell key={`cell-${index}`} fill={entry.color} />
-								))}
+								<Cell fill="#0F766E" />
 							</Pie>
 						</PieChart>
 					</ResponsiveContainer>
 					<div className="absolute inset-0 flex flex-col items-center justify-center">
-						<span className="text-xl font-bold text-gray-800">84%</span>
-						<span className="text-[10px] text-gray-500">Efficiency</span>
+						<span className="text-[24px] font-semibold text-[#191B24]">84%</span>
+						<span className="text-[16px] text-[#424656]">Efficiency</span>
 					</div>
 				</div>
 
 				<div className="flex-1 w-full max-w-[280px] xl:max-w-none mx-auto flex flex-col justify-center gap-3 px-2">
 					{data.map((item, index) => (
-						<div
-							key={index}
-							className="flex items-center justify-between w-full"
-						>
+						<div key={index} className="flex items-center justify-between w-full">
 							<div className="flex items-center gap-2">
-								<div
-									className="w-2 h-2 rounded-full"
-									style={{ backgroundColor: item.color }}
-								></div>
-								<span className="text-sm font-medium text-gray-700">
-									{item.name}
-								</span>
+								<div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: item.color }}></div>
+								<span className="text-[14px] font-medium text-[#191B24]">{item.name}</span>
 							</div>
-							<span className="text-sm font-bold text-gray-800">
-								{item.value}%
-							</span>
+							<span className="text-[14px] font-bold text-[#191B24]">{item.value}%</span>
 						</div>
 					))}
 				</div>

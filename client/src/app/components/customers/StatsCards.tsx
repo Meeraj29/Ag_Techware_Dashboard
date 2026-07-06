@@ -40,19 +40,19 @@ export function StatsCards() {
 	];
 
 	return (
-		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+		<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
 			{cardData.map((card, idx) => {
 				const IconComponent = card.icon;
 				return (
 					<div
 						key={idx}
-						className="bg-white rounded-[20px] p-5 border border-gray-100 shadow-sm flex items-center justify-between relative overflow-hidden"
+						className="bg-[#F4F4F4] rounded-[16px] p-5 border border-[#EDEDED] shadow-sm flex items-center justify-between relative overflow-hidden"
 					>
 						<div className="flex flex-col gap-1">
-							<span className="text-[26px] font-bold text-gray-800 leading-none">
+							<span className="text-[26px] font-semibold text-black leading-none">
 								{card.value}
 							</span>
-							<span className="text-sm font-medium text-gray-400">
+							<span className="text-[16px] font-medium text-black mt-2">
 								{card.title}
 							</span>
 						</div>
@@ -63,11 +63,10 @@ export function StatsCards() {
 							</div>
 							{card.trend && (
 								<span
-									className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-										card.isPositive
+									className={`text-xs font-semibold px-2 py-0.5 rounded-full ${card.isPositive
 											? "bg-[#E1F9EB] text-[#13803B]"
 											: "bg-[#FCE8E6] text-[#C5221F]"
-									}`}
+										}`}
 								>
 									{card.trend}
 								</span>

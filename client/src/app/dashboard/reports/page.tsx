@@ -46,7 +46,7 @@ export default function ReportsPage() {
 			</div>
 
 			{/* Insights and Timeline Section */}
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[400px]">
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 				<div>
 					<IntelligenceInsights />
 				</div>

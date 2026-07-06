@@ -10,16 +10,11 @@ export default function DriverTable() {
 	);
 
 	const filteredRecords = driverRecords.filter((record) => {
-		const matchesSearch =
-			record.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-			record.driverId.toLowerCase().includes(searchQuery.toLowerCase());
-		const matchesType =
-			typeFilter === "All Types" ||
+		const matchesSearch = record.name.toLowerCase().includes(searchQuery.toLowerCase()) || record.driverId.toLowerCase().includes(searchQuery.toLowerCase());
+		const matchesType = typeFilter === "All" || typeFilter === "All Types" ||
 			(typeFilter === "Assigned" && record.assignedVehicle !== "Unassigned") ||
 			(typeFilter === "Unassigned" && record.assignedVehicle === "Unassigned");
-		const matchesStatus =
-			statusFilter === "Status: All" ||
-			record.status === statusFilter.replace("Status: ", "");
+		const matchesStatus = statusFilter === "All" || statusFilter === "Status: All" || record.status === statusFilter.replace("Status: ", "");
 		return matchesSearch && matchesType && matchesStatus;
 	});
 
@@ -67,13 +62,12 @@ export default function DriverTable() {
 							</div>
 							<div>
 								<span
-									className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-bold text-[9px] tracking-wide ${
-										record.status === "Assigned"
+									className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-bold text-[9px] tracking-wide ${record.status === "Assigned"
 											? "bg-blue-50 text-blue-600"
 											: record.status === "Available"
 												? "bg-emerald-50 text-emerald-600"
 												: "bg-orange-50 text-orange-600"
-									}`}
+										}`}
 								>
 									<span className="h-1.5 w-1.5 rounded-full bg-current" />
 									{record.status}

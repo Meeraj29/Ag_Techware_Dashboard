@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Download, Ship, ChevronLeft, ChevronRight } from "lucide-react";
-import { ReportsState, ShipmentData } from "../../types/reports";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Download, Ship, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ReportsState, ShipmentData } from '../../types/reports';
+import Image from 'next/image';
 
 export function AllShipmentsTable() {
 	const shipments = useSelector(
@@ -18,27 +19,27 @@ export function AllShipmentsTable() {
 		currentPage * pageSize,
 	);
 
-	const getStatusStyle = (status: ShipmentData["status"]) => {
+	const getStatusStyle = (status: ShipmentData['status']) => {
 		switch (status) {
-			case "IN Transit":
-				return { dotColor: "bg-amber-500", textColor: "text-amber-600" };
-			case "Processing":
-				return { dotColor: "bg-blue-500", textColor: "text-blue-600" };
-			case "Alert":
-				return { dotColor: "bg-red-500", textColor: "text-red-600" };
+			case 'IN Transit':
+				return { dotColor: 'bg-[#F59E0B]', textColor: 'text-[#F59E0B]' };
+			case 'Processing':
+				return { dotColor: 'bg-[#2563EB]', textColor: 'text-[#2563EB]' };
+			case 'Alert':
+				return { dotColor: 'bg-[#BA1A1A]', textColor: 'text-[#BA1A1A]' };
 			default:
-				return { dotColor: "bg-gray-500", textColor: "text-gray-600" };
+				return { dotColor: 'bg-gray-500', textColor: 'text-gray-600' };
 		}
 	};
 
-	const getTypeStyle = (type: ShipmentData["type"]) => {
+	const getTypeStyle = (type: ShipmentData['type']) => {
 		switch (type) {
-			case "Export":
-				return "bg-purple-100 text-purple-600";
-			case "Import":
-				return "bg-blue-100 text-blue-600";
+			case 'Export':
+				return 'bg-[#3525CD]/30 text-[#3525CD]';
+			case 'Import':
+				return 'bg-[#054890]/30 text-[#054890]';
 			default:
-				return "bg-gray-100 text-gray-600";
+				return 'bg-gray-100 text-gray-600';
 		}
 	};
 
@@ -46,8 +47,8 @@ export function AllShipmentsTable() {
 		<div className="bg-white rounded-[24px] shadow-sm border border-gray-200 overflow-hidden">
 			{/* Header */}
 			<div className="p-6 flex justify-between items-center border-b border-gray-100">
-				<h2 className="font-bold text-lg text-gray-800">All Shipment</h2>
-				<button className="bg-[#0A4B9F] text-white px-4 py-2 rounded-md font-medium text-sm flex items-center gap-2 hover:bg-blue-800 transition shadow-sm">
+				<h2 className="font-semibold text-[20px] text-black">All Shipment</h2>
+				<button className="bg-linear-to-r from-[#0863BD] to-[#04458B] text-white px-3 py-3 rounded-[8px] font-medium text-[16px] flex items-center gap-2 hover:bg-blue-800 transition shadow-sm">
 					Export Pdf / Excel
 					<Download size={16} />
 				</button>
@@ -55,8 +56,8 @@ export function AllShipmentsTable() {
 
 			{/* Table */}
 			<div className="overflow-x-auto">
-				<table className="w-full text-left text-sm text-gray-600 min-w-[800px]">
-					<thead className="bg-gray-50 text-gray-500 font-medium whitespace-nowrap">
+				<table className="w-full text-left text-[16px] text-gray-600 min-w-[800px]">
+					<thead className="bg-[#F4F4F4] text-black font-medium whitespace-nowrap">
 						<tr>
 							<th className="px-6 py-4">Shipment ID</th>
 							<th className="px-6 py-4">Customer</th>
@@ -70,55 +71,50 @@ export function AllShipmentsTable() {
 						{paginatedShipments.map((s, index) => {
 							const statusStyle = getStatusStyle(s.status);
 							return (
-								<tr
-									key={`${s.id}-${s.route}-${index}`}
-									className="hover:bg-gray-50 transition-colors"
-								>
+								<tr key={`${s.id}-${s.route}-${index}`} className="hover:bg-gray-50 transition-colors">
 									{/* Shipment ID */}
-									<td className="px-6 py-4 font-bold text-blue-600 whitespace-nowrap">
-										<a
-											href={`/shipments/${s.id.replace("#", "")}`}
-											className="hover:underline"
-										>
+									<td className="px-6 py-4 font-medium text-[16px] text-[#004BCA] whitespace-nowrap">
+										<a href={`/shipments/${s.id.replace('#', '')}`} className="hover:underline">
 											{s.id}
 										</a>
 									</td>
 
 									{/* Customer */}
-									<td className="px-6 py-4 font-bold text-gray-800 whitespace-nowrap">
+									<td className="px-6 py-4 font-medium text-[16px] text-gray-800 whitespace-nowrap">
 										{s.customer}
 									</td>
 
 									{/* Route */}
 									<td className="px-6 py-4 whitespace-nowrap">
-										<p className="font-medium text-gray-800">{s.route}</p>
-										<p className="text-xs text-gray-400 mt-0.5">{s.subRoute}</p>
+										<p className="font-semibold  text-[#191B24] text-[16px]">{s.route}</p>
+										<p className="text-[12px] text-[#808080] mt-0.5">{s.subRoute}</p>
 									</td>
 
 									{/* Type */}
 									<td className="px-6 py-4 whitespace-nowrap">
 										<span
-											className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${getTypeStyle(s.type)}`}
+											className={`inline-flex items-center justify-center gap-2 min-w-[40px] sm:min-w-[70px] px-3 py-2 rounded-full text-xs sm:text-sm lg:text-[12px] font-semibold whitespace-nowrap ${getTypeStyle(s.type)}`}
 										>
-											<Ship size={12} className="shrink-0" />
-											{s.type}
+											<Image
+												src="/boat.svg"
+												alt="Ship"
+												width={12}
+												height={12}
+												className="shrink-0"
+											/>
+											<span>{s.type}</span>
 										</span>
 									</td>
-
 									{/* Status */}
 									<td className="px-6 py-4 whitespace-nowrap">
-										<span
-											className={`inline-flex items-center gap-1.5 text-sm font-semibold ${statusStyle.textColor}`}
-										>
-											<span
-												className={`w-2 h-2 rounded-full ${statusStyle.dotColor}`}
-											></span>
-											{s.status === "IN Transit" ? "IN Transit" : s.status}
+										<span className={`inline-flex items-center gap-1.5 text-sm font-semibold ${statusStyle.textColor}`}>
+											<span className={`w-2 h-2 rounded-full ${statusStyle.dotColor}`}></span>
+											{s.status === 'IN Transit' ? 'IN Transit' : s.status}
 										</span>
 									</td>
 
 									{/* Date */}
-									<td className="px-6 py-4 whitespace-nowrap text-gray-500 font-medium">
+									<td className="px-6 py-4 whitespace-nowrap text-[#424656] font-medium  text-[15px]">
 										{s.date}
 									</td>
 								</tr>
@@ -129,25 +125,34 @@ export function AllShipmentsTable() {
 			</div>
 
 			{/* Footer / Pagination */}
-			<div className="p-6 flex justify-between items-center text-sm text-gray-500 border-t border-gray-100">
+			<div className="p-6 flex justify-between items-center text-[14px] text-[#64748B] border-t border-[#E7E7E7]">
 				<span>Showing {paginatedShipments.length} of 42 pending reviews</span>
-				<div className="flex gap-2 items-center">
+				<div className="flex gap-1 items-center">
 					<button
-						onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+						onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
 						disabled={currentPage === 1}
-						className="border border-gray-200 p-1.5 rounded-md hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+						className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
 					>
-						<ChevronLeft size={16} />
+						<ChevronLeft className="w-4 h-4" />
 					</button>
-					<span className="border border-gray-200 px-3 py-1 rounded-md bg-white font-medium text-gray-800 text-xs">
-						{currentPage}
-					</span>
+					{Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+						<button
+							key={page}
+							onClick={() => setCurrentPage(page)}
+							className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${page === currentPage
+								? 'border-2 border-[#E0E0E0] text-black bg-white font-semibold'
+								: 'border border-transparent text-gray-500 hover:border-gray-200 hover:text-black'
+								}`}
+						>
+							{page}
+						</button>
+					))}
 					<button
-						onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+						onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
 						disabled={currentPage === totalPages}
-						className="border border-gray-200 p-1.5 rounded-md hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+						className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
 					>
-						<ChevronRight size={16} />
+						<ChevronRight className="w-4 h-4" />
 					</button>
 				</div>
 			</div>

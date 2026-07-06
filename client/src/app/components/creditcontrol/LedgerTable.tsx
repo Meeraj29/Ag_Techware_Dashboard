@@ -223,11 +223,10 @@ export function LedgerTable() {
 								</td>
 
 								<td
-									className={`px-7 py-5 font-medium whitespace-nowrap ${
-										c.overdue > 0
+									className={`px-7 py-5 font-medium whitespace-nowrap ${c.overdue > 0
 											? "text-[#BA1A1A] text-[16px]"
 											: "text-black text-[16px]"
-									}`}
+										}`}
 								>
 									₹{c.overdue.toLocaleString("en-US")}
 								</td>
@@ -289,11 +288,10 @@ export function LedgerTable() {
 						<button
 							key={page}
 							onClick={() => setCurrentPage(page)}
-							className={`w-8 h-8 flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${
-								page === currentPage
+							className={`w-8 h-8 flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${page === currentPage
 									? "border border-[#E0E0E0] text-black bg-white font-semibold"
 									: "border border-transparent text-gray-500 hover:border-gray-200 hover:text-black"
-							}`}
+								}`}
 						>
 							{page}
 						</button>

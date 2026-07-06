@@ -11,16 +11,9 @@ import {
 import { Search } from "lucide-react";
 import { Button } from "../../ui/Button";
 
-const typeOptions = ["All", "Heavy Truck", "Refrigerated Van", "LCV", "HCV"];
-const statusOptions = [
-	"All",
-	"In Transit",
-	"Maintenance",
-	"Available",
-	"Inactive",
-	"Decommissioned",
-];
-const dateOptions = ["Last 7 Days", "Last 30 Days", "Last 90 Days"];
+const typeOptions = ["All Types", "Heavy Truck", "Refrigerated Van", "LCV", "HCV"];
+const statusOptions = ["Status : All", "In Transit", "Maintenance", "Available", "Inactive", "Decommissioned"];
+const dateOptions = ["Last 30 Days", "Last 60 Days", "Last 90 Days"];
 
 export default function FleetToolbar() {
 	const dispatch = useDispatch();
@@ -40,7 +33,7 @@ export default function FleetToolbar() {
 						value={searchQuery}
 						onChange={(e) => dispatch(setSearchQuery(e.target.value))}
 						placeholder="Vehicle Number..."
-						className="w-full rounded-full border border-gray-200 bg-white py-3 pl-10 pr-4 text-sm text-gray-700 outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
+						className="w-full rounded-[16px] border border-[#EBEBEB] bg-[#F1F1F1] py-3 pl-10 pr-4 text-sm text-black outline-none transition "
 					/>
 				</div>
 			</div>
@@ -49,7 +42,7 @@ export default function FleetToolbar() {
 				<select
 					value={typeFilter}
 					onChange={(e) => dispatch(setTypeFilter(e.target.value))}
-					className="rounded-full border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+					className="rounded-[8px] border border-[#EBEBEB] bg-white px-4 py-3 text-sm text-black outline-none"
 				>
 					{typeOptions.map((option) => (
 						<option key={option} value={option}>
@@ -61,7 +54,7 @@ export default function FleetToolbar() {
 				<select
 					value={statusFilter}
 					onChange={(e) => dispatch(setStatusFilter(e.target.value))}
-					className="rounded-full border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+					className="rounded-[8px] border border-[#EBEBEB] bg-white px-4 py-3 text-sm text-black outline-none"
 				>
 					{statusOptions.map((option) => (
 						<option key={option} value={option}>
@@ -73,7 +66,7 @@ export default function FleetToolbar() {
 				<select
 					value={dateRange}
 					onChange={(e) => dispatch(setDateRange(e.target.value))}
-					className="rounded-full border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+					className="rounded-[8px] border border-[#EBEBEB] bg-white px-4 py-3 text-sm text-black outline-none"
 				>
 					{dateOptions.map((option) => (
 						<option key={option} value={option}>
@@ -84,22 +77,13 @@ export default function FleetToolbar() {
 			</div>
 
 			<div className="flex flex-wrap gap-3 justify-end">
-				<Button
-					variant="outline"
-					className="rounded-full px-5 py-3 text-sm font-semibold"
-				>
+				<Button variant="outline" className="rounded-[8px] px-5 py-4 text-sm font-semibold border-2 border-primary">
 					Assign Driver
 				</Button>
-				<Button
-					variant="outline"
-					className="rounded-full px-5 py-3 text-sm font-semibold"
-				>
+				<Button variant="outline" className="rounded-[8px] px-5 py-4 text-sm font-semibold border-2 border-primary">
 					Export
 				</Button>
-				<Button
-					variant="gradient"
-					className="rounded-full px-5 py-3 text-sm font-semibold"
-				>
+				<Button variant="gradient" className="rounded-[8px] px-5 py-4 text-sm font-semibold border-2 border-primary">
 					Add Vehicle
 				</Button>
 			</div>

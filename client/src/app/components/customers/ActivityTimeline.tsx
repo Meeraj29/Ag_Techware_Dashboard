@@ -1,93 +1,84 @@
 "use client";
 
-import React from "react";
-import { useSelector } from "react-redux";
-import { Check, Truck, AlertCircle, AlertTriangle } from "lucide-react";
-import { RootState } from "../../redux/store";
-import { ActivityTimelineItem } from "../../types/customers";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { ActivityTimelineItem } from '../../types/customers';
 
 export function ActivityTimeline() {
 	const timeline = useSelector((state: RootState) => state.customers.timeline);
 
 	const getIconStyles = (type: string) => {
 		switch (type) {
-			case "payment":
+			case 'payment':
 				return {
-					icon: Check,
-					bg: "bg-[#E6F4EA]",
-					border: "border-[#13803B]/20",
-					text: "text-[#13803B]",
+					iconSrc: '/payment.svg',
+					bg: 'bg-[#E6F4EA]',
+					border: 'border-[#13803B]/20',
+					alt: 'Payment Processed',
 				};
-			case "shipment":
+			case 'shipment':
 				return {
-					icon: Truck,
-					bg: "bg-[#E8F0FE]",
-					border: "border-[#1A73E8]/20",
-					text: "text-[#1A73E8]",
+					iconSrc: '/shipmentoutbound.svg',
+					bg: 'bg-[#E8F0FE]',
+					border: 'border-[#1A73E8]/20',
+					alt: 'Shipment Outbound',
 				};
-			case "alert":
+			case 'alert':
 				return {
-					icon: AlertCircle,
-					bg: "bg-[#FEF7E0]",
-					border: "border-[#F9AB00]/20",
-					text: "text-[#F9AB00]",
+					iconSrc: '/customeralert.svg',
+					bg: 'bg-[#FEF7E0]',
+					border: 'border-[#F9AB00]/20',
+					alt: 'Customs Alert',
 				};
-			case "hold":
+			case 'hold':
 				return {
-					icon: AlertTriangle,
-					bg: "bg-[#FCE8E6]",
-					border: "border-[#C5221F]/20",
-					text: "text-[#C5221F]",
+					iconSrc: '/customeralert.svg',
+					bg: 'bg-[#FCE8E6]',
+					border: 'border-[#C5221F]/20',
+					alt: 'Account Hold',
 				};
 			default:
 				return {
-					icon: AlertCircle,
-					bg: "bg-gray-100",
-					border: "border-gray-200",
-					text: "text-gray-600",
+					iconSrc: '/alert.svg',
+					bg: 'bg-gray-50',
+					border: 'border-gray-200',
+					alt: 'Activity',
 				};
 		}
 	};
 
 	return (
-		<div className="bg-white rounded-3xl border border-gray-200 p-6 w-full">
-			<h2 className="text-lg font-bold text-gray-800 mb-6">
-				Activity Timeline
-			</h2>
+		<div className="bg-white rounded-[24px] border border-[#EBEBEB] p-6 w-full shadow-sm">
+			<h2 className="text-[18px] font-bold text-black mb-5">Activity Timeline</h2>
 
-			<div className="relative pl-6 flex flex-col gap-6">
-				{/* Timeline line */}
-				<div className="absolute left-4.75 top-4 bottom-4 w-0.5 bg-gray-100"></div>
-
-				{timeline.map((item: ActivityTimelineItem) => {
+			<div className="flex flex-col">
+				{timeline.map((item: ActivityTimelineItem, index: number) => {
 					const styles = getIconStyles(item.type);
-					const IconComponent = styles.icon;
 					return (
 						<div
 							key={item.id}
-							className="relative flex justify-between items-start gap-4"
+							className={`flex items-start gap-4 py-4 ${index !== timeline.length - 1 ? 'border-b border-[#F5F5F5]' : ''
+								}`}
 						>
-							{/* Timeline marker */}
-							<div className="absolute -left-7.75 mt-0.5 z-10">
-								<div
-									className={`w-8 h-8 rounded-full border ${styles.bg} ${styles.border} ${styles.text} flex items-center justify-center`}
-								>
-									<IconComponent className="w-4 h-4" />
-								</div>
+							{/* Icon Circle */}
+							<div className={`w-10 h-10 rounded-full border ${styles.bg} ${styles.border} flex items-center justify-center shrink-0`}>
+								<img
+									src={styles.iconSrc}
+									alt={styles.alt}
+									className="w-10 h-10 object-contain"
+								/>
 							</div>
 
-							{/* Content */}
-							<div className="flex-1 min-w-0">
-								<p className="text-sm font-bold text-gray-800">{item.title}</p>
-								<p className="text-sm text-gray-500 mt-0.5">
+							{/* Text Content */}
+							<div className="flex-1 min-w-0 pt-0.5">
+								<h3 className="text-[15px] font-semibold text-[#111111]">
+									{item.title}
+								</h3>
+								<p className="text-[13px] text-[#737373] mt-1 leading-relaxed">
 									{item.description}
 								</p>
 							</div>
-
-							{/* Time */}
-							<span className="text-xs text-gray-400 whitespace-nowrap shrink-0 pt-0.5">
-								{item.time}
-							</span>
 						</div>
 					);
 				})}

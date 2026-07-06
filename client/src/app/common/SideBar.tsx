@@ -53,7 +53,7 @@ export default function SideBar({
 									item.href === "/"
 										? pathname === "/"
 										: pathname === item.href ||
-											pathname.startsWith(`${item.href}/`);
+										pathname.startsWith(`${item.href}/`);
 								const Icon = item.icon;
 								return (
 									<li key={item.name}>
@@ -61,13 +61,11 @@ export default function SideBar({
 											href={item.href}
 											onClick={onClose}
 											title={isCollapsed ? item.name : undefined}
-											className={`flex items-center rounded-lg py-2.5 font-medium transition-colors gap-3 px-3 ${
-												isCollapsed ? "lg:justify-center lg:px-2" : ""
-											} ${
-												isActive
+											className={`flex items-center rounded-lg py-2.5 font-medium transition-colors gap-3 px-3 ${isCollapsed ? "lg:justify-center lg:px-2" : ""
+												} ${isActive
 													? "bg-gradiate text-white shadow-sm"
 													: "text-gray-700 hover:bg-gray-100"
-											}`}
+												}`}
 										>
 											<Icon
 												className={`shrink-0 h-5 w-5 ${isCollapsed ? "lg:h-6 lg:w-6" : ""} ${isActive ? "text-white" : "text-gray-500"}`}

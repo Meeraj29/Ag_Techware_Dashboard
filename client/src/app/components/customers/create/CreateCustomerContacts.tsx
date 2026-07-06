@@ -49,29 +49,17 @@ export function CreateCustomerContacts() {
 									# <Search className="w-3.5 h-3.5 text-gray-400" />
 								</div>
 							</th>
-							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left">
-								Contact Name
-							</th>
-							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left">
-								Address
-							</th>
-							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left">
-								Phone Number
-							</th>
-							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left">
-								Email
-							</th>
-							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left rounded-tr-[8px]">
-								Action
-							</th>
+							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left">Contact Name</th>
+							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left">Address</th>
+							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left">Phone Number</th>
+							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left">Email</th>
+							<th className="py-3 px-4 text-[13px] font-medium text-gray-500 text-left rounded-tr-[8px]">Action</th>
 						</tr>
 					</thead>
 					<tbody className="divide-y divide-gray-50">
 						{contacts.map((contact, idx) => (
 							<tr key={contact.id}>
-								<td className="py-3 px-4 text-[13px] text-gray-500 font-medium">
-									{idx + 1}
-								</td>
+								<td className="py-3 px-4 text-[13px] text-gray-500 font-medium">{idx + 1}</td>
 								<td className="py-3 px-4">
 									<input
 										type="text"
@@ -111,6 +99,7 @@ export function CreateCustomerContacts() {
 									)}
 								</td>
 							</tr>
+
 						))}
 					</tbody>
 				</table>
