@@ -23,19 +23,19 @@ export function RevVsCost() {
   const operationCostPercent = (revVsCost.operationCost / total) * 100;
 
   return (
-    <div className="bg-white rounded-[24px] border border-gray-200 p-6 flex flex-col justify-between h-[300px]">
+    <div className="bg-white rounded-[24px] border border-gray-200 p-6 flex flex-col justify-between h-auto lg:h-[270px]">
       <div>
-        <h2 className="font-bold text-lg text-gray-800 mb-6">Rev vs Cost</h2>
+        <h2 className="font-semibold text-[20px] text-[#0F172A] mb-6">Rev vs Cost</h2>
         
         {/* Net Revenue Progress */}
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-500">Net Revenue</span>
-            <span className="text-sm font-bold text-gray-800">{netRevenueStr}</span>
+            <span className="text-[14px] font-medium text-[#64748B]">Net Revenue</span>
+            <span className="text-[14px] font-bold text-[#0F172A]">{netRevenueStr}</span>
           </div>
-          <div className="w-full bg-gray-100 h-3.5 rounded-full overflow-hidden">
+          <div className="w-full bg-[#F1F5F9] h-[8px] rounded-full overflow-hidden">
             <div 
-              className="bg-[#0047FF] h-full rounded-full" 
+              className="bg-linear-to-r from-[#2563EB] to-[#228FEE] h-full rounded-full" 
               style={{ width: `${netRevenuePercent}%` }}
             ></div>
           </div>
@@ -44,19 +44,19 @@ export function RevVsCost() {
         {/* Operation Cost Progress */}
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-500">Operation Cost</span>
-            <span className="text-sm font-bold text-gray-800">{operationCostStr}</span>
+            <span className="text-[14px] font-medium text-[#64748B]">Operation Cost</span>
+            <span className="text-[14px] font-bold text-[#0F172A]">{operationCostStr}</span>
           </div>
-          <div className="w-full bg-gray-100 h-3.5 rounded-full overflow-hidden">
+          <div className="w-full bg-gray-100 h-[8px] rounded-full overflow-hidden">
             <div 
-              className="bg-[#D1D5DB] h-full rounded-full" 
+              className="bg-[#CBD5E1] h-full rounded-full" 
               style={{ width: `${operationCostPercent}%` }}
             ></div>
           </div>
         </div>
       </div>
 
-      <p className="text-xs italic text-gray-400">
+      <p className="text-[12px] italic text-[#94A3B8]">
         *{revVsCost.efficiencyNote}*
       </p>
     </div>

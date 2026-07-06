@@ -8,8 +8,8 @@ export default function FleetHeader({ variant = 'main' }: FleetHeaderProps) {
   if (variant === 'sub') {
     return (
       <div className="mt-6">
-        <h2 className="text-base font-bold text-gray-900">Vehicle Management</h2>
-        <p className="mt-1 text-xs text-gray-400">
+        <h2 className="text-[20px] font-semibold text-black/70">Vehicle Management</h2>
+        <p className="mt-1 text-[16px] text-black/70">
           Track, monitor, and maintain all vehicles efficiently.
         </p>
       </div>
@@ -18,10 +18,10 @@ export default function FleetHeader({ variant = 'main' }: FleetHeaderProps) {
 
   return (
     <div>
-      <h1 className="text-xl font-bold tracking-tight text-gray-900">
+      <h1 className="text-[20px] font-semibold tracking-tight text-gray-900">
         Fleet Management
       </h1>
-      <p className="mt-0.5 text-xs text-gray-400">
+      <p className="mt-0.5 text-[16px] text-black/70">
         System
       </p>
     </div>

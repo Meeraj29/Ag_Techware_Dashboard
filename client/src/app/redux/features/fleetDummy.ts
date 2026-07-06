@@ -28,13 +28,14 @@ export const dummyVehicles: FleetVehicle[] = [
   {
     id: "vehicle-1",
     vehicleNumber: "MH-12-FR-4592",
-    type: "Heavy Truck",
+    type: "Heavy Truck (12W)",
     modelYear: "Tata Prime 4923 2023",
     capacity: "24,000 Kg",
     assignedDriver: "Rajesh Kumar",
     status: "In Transit",
     regExp: "12 Nov 2025",
     insuranceExp: "28 Jan 2025",
+    modelName: ""
   },
   {
     id: "vehicle-2",
@@ -45,7 +46,8 @@ export const dummyVehicles: FleetVehicle[] = [
     assignedDriver: "Unassigned",
     status: "Maintenance",
     regExp: "15 Jul 2025",
-    insuranceExp: "—",           // design shows dash
+    insuranceExp: "—",
+    modelName: ""
   },
   {
     id: "vehicle-3",
@@ -57,6 +59,7 @@ export const dummyVehicles: FleetVehicle[] = [
     status: "Available",
     regExp: "15 Jun 2026",
     insuranceExp: "22 Aug 2025",
+    modelName: ""
   },
   {
     id: "vehicle-4",
@@ -67,7 +70,8 @@ export const dummyVehicles: FleetVehicle[] = [
     assignedDriver: "Amit Singh",
     status: "Inactive",
     regExp: "09 Mar 2025",
-    insuranceExp: "—",           // design shows dash
+    insuranceExp: "—",
+    modelName: ""
   },
   {
     id: "vehicle-5",
@@ -76,9 +80,10 @@ export const dummyVehicles: FleetVehicle[] = [
     modelYear: "Ashok Leyland 2018",
     capacity: "18,500 Kg",
     assignedDriver: "Decommissioned",
-    status: "Inactive",          // design shows Inactive (not Decommissioned)
+    status: "Inactive", // design shows Inactive (not Decommissioned)
     regExp: "Expired",
     insuranceExp: "Expired",
+    modelName: ""
   },
 ];
 
@@ -167,7 +172,7 @@ export const dummyPurchaseOrders: PurchaseOrder[] = [
     tag: "Tires",
     amount: "$12,450.00",
     status: "Ordered",
-    statusColor: "bg-blue-50 text-blue-600 border border-blue-100",
+    statusColor: "bg-[#054B94]/13 text-primary border border-blue-100",
     date: "Oct 24, 2023",
   },
   {
@@ -177,7 +182,7 @@ export const dummyPurchaseOrders: PurchaseOrder[] = [
     tag: null,
     amount: "$45,000.00",
     status: "Received",
-    statusColor: "bg-emerald-50 text-emerald-600 border border-emerald-100",
+    statusColor: "bg-[#054B94]/13 text-primary border border-emerald-100",
     date: "Oct 21, 2023",
   },
   {
@@ -187,7 +192,7 @@ export const dummyPurchaseOrders: PurchaseOrder[] = [
     tag: "SPARE PARTS",
     amount: "$2,100.00",
     status: "Draft",
-    statusColor: "bg-red-50 text-red-500 border border-red-100",
+    statusColor: "bg-[#FFD7D7] text-[#880000] border border-red-100",
     date: "TBD",
   },
   {
@@ -197,7 +202,7 @@ export const dummyPurchaseOrders: PurchaseOrder[] = [
     tag: null,
     amount: "$8,200.00",
     status: "Pending Approval",
-    statusColor: "bg-purple-50 text-purple-600 border border-purple-100",
+    statusColor: "bg-[#8760FF]/13 text-[#2F0D83] border border-purple-100",
     date: "Nov 02, 2023",
   },
   {
@@ -207,7 +212,7 @@ export const dummyPurchaseOrders: PurchaseOrder[] = [
     tag: "Fuel Cards",
     amount: "$38,000.00",
     status: "Ordered",
-    statusColor: "bg-blue-50 text-blue-600 border border-blue-100",
+    statusColor: "bg-[#054B94]/13 text-primary border border-blue-100",
     date: "Oct 28, 2023",
   },
   {
@@ -217,7 +222,7 @@ export const dummyPurchaseOrders: PurchaseOrder[] = [
     tag: "SPARE PARTS",
     amount: "$4,520.00",
     status: "Received",
-    statusColor: "bg-emerald-50 text-emerald-600 border border-emerald-100",
+    statusColor: "bg-[#054B94]/13 text-primary border border-emerald-100",
     date: "Oct 19, 2023",
   },
   {
@@ -227,7 +232,7 @@ export const dummyPurchaseOrders: PurchaseOrder[] = [
     tag: "Tires",
     amount: "$15,700.00",
     status: "Pending Approval",
-    statusColor: "bg-purple-50 text-purple-600 border border-purple-100",
+    statusColor: "bg-[#8760FF]/13 text-[#2F0D83] border border-purple-100",
     date: "Nov 05, 2023",
   },
   {
@@ -237,7 +242,7 @@ export const dummyPurchaseOrders: PurchaseOrder[] = [
     tag: "SPARE PARTS",
     amount: "$9,800.00",
     status: "Received",
-    statusColor: "bg-emerald-50 text-emerald-600 border border-emerald-100",
+    statusColor: "bg-[#054B94]/13 text-primary border border-emerald-100",
     date: "Oct 30, 2023",
   },
 ];

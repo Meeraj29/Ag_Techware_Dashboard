@@ -28,15 +28,15 @@ function StatCard({ data }: { data: StatCardData }) {
   }
 
   return (
-    <div className="bg-[#F6F7F9] rounded-[24px] p-6 flex flex-col justify-between">
+    <div className="bg-[#F4F4F4] rounded-[24px] p-6 flex flex-col justify-between border border-[#EDEDED]">
       <div className="flex justify-between items-start">
-        <h3 className="text-3xl font-bold text-gray-800">{data.value}</h3>
+        <h3 className="text-[26px] font-semibold text-black">{data.value}</h3>
         <div className="bg-gray-200 p-2.5 rounded-xl">
           {iconMap[data.icon]}
         </div>
       </div>
-      <div className="flex justify-between items-end mt-6">
-        <p className="text-sm font-medium text-gray-700">{data.title}</p>
+      <div className="flex justify-between items-end mt-4">
+        <p className="text-[16px] font-medium text-black">{data.title}</p>
         <span className={`text-xs font-semibold px-2 py-0.5 rounded-full flex items-center ${changeBg} ${changeText}`}>
           {data.change}
           {data.change !== '0%' && (

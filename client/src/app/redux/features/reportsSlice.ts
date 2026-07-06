@@ -19,9 +19,9 @@ const initialState: ReportsState = {
     { day: 'Sat', thisMonth: 35, lastMonth: 25 },
   ],
   clearanceStatus: [
-    { name: 'Completed', value: 75, color: '#008080' },
-    { name: 'Processing', value: 15, color: '#FFD700' },
-    { name: 'Pending', value: 10, color: '#FF4500' },
+    { name: 'Completed', value: 75, color: '#004BCA' },
+    { name: 'Processing', value: 15, color: '#006972' },
+    { name: 'Pending', value: 10, color: '#BA1A1A' },
   ],
   revVsCost: {
     netRevenue: 284000,

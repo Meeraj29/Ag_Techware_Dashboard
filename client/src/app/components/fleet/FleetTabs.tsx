@@ -28,9 +28,9 @@ export default function FleetTabs() {
             <button
               key={tab}
               onClick={() => dispatch(setActiveTab(tab))}
-              className={`rounded-lg px-4 py-2 text-xs font-medium transition-all ${
+              className={`rounded-[8px] px-4 py-2 text-[16px] font-medium transition-all ${
                 isActive 
-                  ? "bg-[#0b57d0] text-white shadow-sm" 
+                  ? "bg-linear-to-r from-[#0863BD] to-[#04458B] text-white shadow-sm" 
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >

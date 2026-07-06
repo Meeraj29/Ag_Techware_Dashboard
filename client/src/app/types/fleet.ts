@@ -1,4 +1,6 @@
 export interface FleetVehicle {
+  [x: string]: string;
+  modelName: string;
   id: string;
   vehicleNumber: string;
   type: string;

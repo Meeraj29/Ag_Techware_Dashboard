@@ -13,21 +13,21 @@ export default function FleetStats() {
       value: stats.totalVehicles,
       icon: Truck,
       badge: "+12%",
-      badgeClass: "bg-emerald-50 text-emerald-600 border border-emerald-100",
+      badgeClass: "bg-[#248F5F]/40 text-[#005C3D] ",
     },
     {
       title: "ACTIVE TRIPS",
       value: stats.activeTrips,
       icon: Activity,
       badge: "In Motion",
-      badgeClass: "bg-emerald-50 text-emerald-600 border border-emerald-100",
+      badgeClass: "bg-[#248F5F]/10 text-[#005C3D] ",
     },
     {
       title: "MAINTENANCE",
       value: stats.maintenance,
       icon: Wrench,
       badge: "↑ 8 Urgent",
-      badgeClass: "bg-red-50 text-red-500 border border-red-100",
+      badgeClass: "bg-[#DC9C9C] text-[#880000] ",
     },
   ];
 
@@ -43,10 +43,10 @@ export default function FleetStats() {
             {/* Left side text values */}
             <div className="flex flex-col justify-between">
               <div>
-                <p className="text-3xl font-bold tracking-tight text-gray-900 leading-none">
+                <p className="text-[26px] font-semibold tracking-tight text-black leading-none">
                   {card.value}
                 </p>
-                <p className="mt-2 text-xs font-bold tracking-wide text-gray-500 uppercase">
+                <p className="mt-2 text-[16px] font-medium tracking-wide text-black uppercase">
                   {card.title}
                 </p>
               </div>

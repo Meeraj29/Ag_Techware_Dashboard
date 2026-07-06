@@ -13,21 +13,21 @@ export default function TripStats() {
       value: tripStats.activeVehicles,
       icon: Truck,
       badge: "+12%",
-      badgeClass: "bg-emerald-50 text-emerald-600 border border-emerald-100",
+      badgeClass: "bg-[#248F5F]/40 text-[#005C3D] border border-emerald-100",
     },
     {
       title: "ACTIVE TRIPS",
       value: tripStats.activeTrips,
       icon: Activity,
       badge: "In Motion",
-      badgeClass: "bg-emerald-50 text-emerald-600 border border-emerald-100",
+      badgeClass: "bg-[#248F5F]/40 text-[#005C3D] border border-emerald-100",
     },
     {
       title: "DELAY TRIPS",
       value: tripStats.delayTrips,
       icon: AlertTriangle,
       badge: "↑2%",
-      badgeClass: "bg-red-50 text-red-500 border border-red-100",
+      badgeClass: "bg-[#DC9C9C] text-[#BA1A1A] border border-red-100",
     },
   ];
 
@@ -36,11 +36,11 @@ export default function TripStats() {
       {cards.map((card) => {
         const Icon = card.icon;
         return (
-          <div key={card.title} className="relative flex justify-between rounded-2xl bg-[#f5f6f7] p-6 h-36">
+          <div key={card.title} className="relative flex justify-between rounded-2xl bg-[#F4F4F4] p-6 h-36">
             <div className="flex flex-col justify-between">
               <div>
-                <p className="text-3xl font-bold tracking-tight text-gray-900 leading-none">{card.value}</p>
-                <p className="mt-2 text-xs font-bold tracking-wide text-gray-500 uppercase">{card.title}</p>
+                <p className="text-[26px] font-semibold tracking-tight text-black leading-none">{card.value}</p>
+                <p className="mt-2 text-[16px] font-medium tracking-wide text-black uppercase">{card.title}</p>
               </div>
             </div>
             <div className="flex flex-col justify-between items-end">

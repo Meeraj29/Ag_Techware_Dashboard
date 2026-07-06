@@ -251,11 +251,11 @@ export function LedgerTable() {
         <span>
           Results: <span className="font-semibold text-black">{Math.min(currentPage * pageSize, filteredCustomers.length)}</span> Out Of <span className="font-semibold text-black">{filteredCustomers.length}</span>
         </span>
-        <div className="flex gap-1 items-center">
+<div className="flex gap-1 items-center">
           <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="w-8 h-8 flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -263,11 +263,10 @@ export function LedgerTable() {
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`w-8 h-8 flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${
-                page === currentPage
-                  ? 'border border-[#E0E0E0] text-black bg-white font-semibold'
+              className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${page === currentPage
+                  ? 'border-2 border-[#E0E0E0] text-black bg-white font-semibold'
                   : 'border border-transparent text-gray-500 hover:border-gray-200 hover:text-black'
-              }`}
+                }`}
             >
               {page}
             </button>
@@ -275,7 +274,7 @@ export function LedgerTable() {
           <button
             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="w-8 h-8 flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

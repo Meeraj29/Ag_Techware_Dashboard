@@ -11,28 +11,28 @@ export default function FastagToolbar() {
           <input
             type="text"
             placeholder="Vehicle Number..."
-            className="w-full rounded-lg border border-gray-200 bg-[#f8f9fa] py-2 pl-9 pr-3 text-xs text-gray-700 outline-none placeholder:text-gray-400"
+            className="w-full rounded-lg border border-[#D8D8D8] bg-[#F1F1F1] py-2 pl-9 pr-3 text-xs text-gray-700 outline-none placeholder:text-gray-400"
           />
         </div>
-        <select className="rounded-lg border border-gray-200 bg-white px-2.5 py-2 text-xs text-gray-600 outline-none">
+        <select className="rounded-[8px] border border-[#EBEBEB] bg-white px-2.5 py-2 text-[14px] text-black outline-none">
           <option>All Types</option>
         </select>
-        <select className="rounded-lg border border-gray-200 bg-white px-2.5 py-2 text-xs text-gray-600 outline-none">
+        <select className="rounded-[8px] border border-[#EBEBEB] bg-white px-2.5 py-2 text-[14px] text-black outline-none">
           <option>Status: All</option>
         </select>
-        <select className="rounded-lg border border-gray-200 bg-white px-2.5 py-2 text-xs text-gray-600 outline-none">
+        <select className="rounded-[8px] border border-[#EBEBEB] bg-white px-2.5 py-2 text-[14px] text-black outline-none">
           <option>Date: Last 30 Days</option>
         </select>
       </div>
 
       <div className="flex gap-2 justify-end items-center">
-        <button className="rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-50">
+        <button className="rounded-lg border-2 border-primary bg-white px-3 py-2 text-[14px] font-semibold text-primary hover:bg-gray-50">
           Export
         </button>
-        <button className="rounded-lg border border-blue-600 bg-white px-3 py-2 text-xs font-bold text-blue-600 hover:bg-blue-50">
+        <button className="rounded-lg border-2 border-primary bg-white px-3 py-2 text-[14px] font-semibold text-primary hover:bg-gray-50">
           Add Expense
         </button>
-        <button className="rounded-lg bg-[#0052cc] px-3 py-2 text-xs font-bold text-white hover:bg-blue-700">
+        <button className="rounded-lg border-2 border-primary bg-linear-to-r from-[#0863BD] to-[#04458B] px-3 py-2 text-[14px] font-semibold text-white hover:bg-blue-700">
           Recharge FASTag
         </button>
       </div>

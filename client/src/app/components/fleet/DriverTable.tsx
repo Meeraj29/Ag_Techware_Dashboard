@@ -9,10 +9,10 @@ export default function DriverTable() {
 
   const filteredRecords = driverRecords.filter((record) => {
     const matchesSearch = record.name.toLowerCase().includes(searchQuery.toLowerCase()) || record.driverId.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesType = typeFilter === "All Types" || 
+    const matchesType = typeFilter === "All" || typeFilter === "All Types" || 
       (typeFilter === "Assigned" && record.assignedVehicle !== "Unassigned") ||
       (typeFilter === "Unassigned" && record.assignedVehicle === "Unassigned");
-    const matchesStatus = statusFilter === "Status: All" || record.status === statusFilter.replace("Status: ", "");
+    const matchesStatus = statusFilter === "All" || statusFilter === "Status: All" || record.status === statusFilter.replace("Status: ", "");
     return matchesSearch && matchesType && matchesStatus;
   });
 

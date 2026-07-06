@@ -7,6 +7,9 @@ import { Search, MoreVertical, ChevronLeft, ChevronRight } from 'lucide-react';
 import { RootState } from '../../redux/store';
 import { setSearchQuery } from '../../redux/features/customersSlice';
 import { Customer } from '../../types/customers';
+import Image from 'next/image';
+import { Ship } from "lucide-react";
+
 
 export function CustomersTable() {
   const router = useRouter();
@@ -14,6 +17,8 @@ export function CustomersTable() {
   const { customers, searchQuery, statusFilter, typeFilter } = useSelector(
     (state: RootState) => state.customers
   );
+
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -47,28 +52,42 @@ export function CustomersTable() {
       setCurrentPage(page);
     }
   };
+ const getStatusDotColor = (status: string) => {
+  switch (status) {
+    case "Active":
+      return {
+        dot: "bg-[#059669]",
+        text: "text-[#059669]",
+      };
 
-  const getStatusDotColor = (status: string) => {
-    switch (status) {
-      case 'Active':
-        return 'bg-[#0F9D58]';
-      case 'Warning':
-        return 'bg-[#DB4437]';
-      case 'Hold':
-        return 'bg-[#F4B400]';
-      default:
-        return 'bg-gray-400';
-    }
-  };
+    case "Warning":
+      return {
+        dot: "bg-[#C10209]",
+        text: "text-[#C10209]",
+      };
+
+    case "Hold":
+      return {
+        dot: "bg-[#D97706]",
+        text: "text-[#D97706]",
+      };
+
+    default:
+      return {
+        dot: "bg-gray-400",
+        text: "text-gray-400",
+      };
+  }
+};
 
   const getTypeBadgeStyles = (type: string) => {
     switch (type) {
       case 'Both':
-        return 'bg-[#E6F4EA] text-[#13803B]';
+        return 'bg-[#B8EADA] text-[#005C3D]';
       case 'Export':
-        return 'bg-[#F3E8FF] text-[#6B21A8]';
+        return 'bg-[#C3BEF0] text-[#3525CD]';
       case 'Import':
-        return 'bg-[#E8F0FE] text-[#1A73E8]';
+        return 'bg-[#B0C5DA] text-[#054890]';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -77,7 +96,7 @@ export function CustomersTable() {
  
 
   return (
-    <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden mb-6 relative">
+    <div className="bg-white rounded-[24px] border border-gray-200 shadow-sm overflow-hidden mb-6 relative">
       {openDropdown && (
         <div 
           className="fixed inset-0 z-40" 
@@ -101,32 +120,38 @@ export function CustomersTable() {
           dispatch(setSearchQuery(e.target.value));
           setCurrentPage(1);
         }}
-        className="w-full h-11 rounded-xl border border-gray-200 bg-[#F5F5F5] pl-11 pr-4 text-sm focus:outline-none"
+        className="w-full h-11 rounded-[16px] border border-[#D8D8D8] bg-[#F1F1F1] pl-11 pr-4 text-sm focus:outline-none"
       />
     </div>
 
     {/* Filters */}
-    <div className="flex flex-wrap items-center justify-end gap-2">
+    <div className="flex flex-wrap items-center justify-end gap-2 ">
 
       {/* Date */}
-      <button className="h-11 rounded-xl border border-gray-200 bg-white px-4 text-sm whitespace-nowrap">
+      <button className="h-11 rounded-[8px] border border-[#EBEBEB] bg-white px-4 text-[14px] whitespace-nowrap text-black">
         Last 30 Days
       </button>
 
       {/* Status */}
-      <button className="h-11 rounded-xl border border-gray-200 bg-white px-4 text-sm whitespace-nowrap">
+      <button className="h-11 rounded-[8px] border border-[#EBEBEB] bg-white px-4 text-[14px] whitespace-nowrap text-black">
         Status: All
       </button>
 
       {/* Customer Type */}
-      <button className="h-11 rounded-xl border border-gray-200 bg-white px-4 text-sm whitespace-nowrap">
+      <button className="h-11 rounded-[8px] border border-[#EBEBEB] bg-white px-4 text-[14px] whitespace-nowrap text-black">
         Customer Type
       </button>
 
       {/* Advanced Export */}
-      <button className="h-11 rounded-xl border border-gray-200 bg-white px-4 text-sm text-blue-600 whitespace-nowrap">
-        Advanced Export
-      </button>
+     <button className="inline-flex items-center gap-2 h-11 rounded-[8px] border border-[#EBEBEB] bg-white px-4 text-[14px] font-medium text-primary whitespace-nowrap">
+  <Image
+    src="/filter1.svg"
+    width={20}
+    height={20}
+    alt="Export"
+  />
+  <span>Advanced Export</span>
+</button>
 
     </div>
 
@@ -134,9 +159,9 @@ export function CustomersTable() {
 </div>
 
       {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm text-gray-600 min-w-225">
-          <thead className="bg-[#F8F9FA] text-gray-500 font-semibold border-b border-gray-100">
+      <div className="overflow-x-auto scrollbar-hide">
+        <table className="w-full text-left text-[16px] text-black/80 min-w-225 whitespace-nowrap">
+          <thead className="bg-[#F4F4F4] text-black/80 font-semibold border-b border-[#F4F4F4]">
             <tr>
               <th className="px-6 py-4">Customer Id</th>
               <th className="px-6 py-4">Customer</th>
@@ -156,38 +181,55 @@ export function CustomersTable() {
                 className="hover:bg-gray-50/70 transition-colors cursor-pointer"
                 onClick={() => router.push(`/dashboard/customers/${cust.id}`)}
               >
-                <td className="px-6 py-4 font-semibold text-blue-600 hover:underline">
+                <td className="px-6 py-4 font-semibold text-[#3525CD]">
                   {cust.id}
                 </td>
-                <td className="px-6 py-4 font-bold text-gray-800">
+                <td className="px-6 py-4 font-medium  text-black">
                   {cust.name}
                 </td>
                 <td className="px-6 py-4">
-                  <div className="text-sm font-medium text-gray-800">{cust.contactName}</div>
-                  <div className="text-xs text-gray-400">{cust.contactPhone}</div>
+                  <div className="text-[16px] font-medium text-black">{cust.contactName}</div>
+                  <div className="text-[12px] text-black/69">{cust.contactPhone}</div>
                 </td>
-                <td className="px-6 py-4">
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-xl ${getTypeBadgeStyles(cust.type)}`}>
-                    {cust.type}
-                  </span>
-                </td>
-                <td className="px-6 py-4 font-medium text-gray-800">
+               <td className="px-6 py-4">
+  <span
+    className={`inline-flex items-center gap-2 text-[12px] font-semibold px-3 py-2 rounded-full whitespace-nowrap ${getTypeBadgeStyles(
+      cust.type
+    )}`}
+  >
+    <Image
+      src="/boat.svg"
+      width={16}
+      height={16}
+      alt="Ship"
+      className="shrink-0"
+    />
+    <span>{cust.type}</span>
+  </span>
+</td>
+                <td className="px-6 py-4 font-medium text-black">
                   {cust.shipments}
                 </td>
-                <td className="px-6 py-4 font-medium text-gray-800">
+                <td className="px-6 py-4 font-medium text-black">
                   ₹{cust.creditLimit.toLocaleString('en-IN')}
                 </td>
-                <td className="px-6 py-4 font-medium text-gray-800">
+                <td className="px-6 py-4 font-medium text-black">
                   ₹{cust.outstanding.toLocaleString('en-IN')}
                 </td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-1.5">
-                    <span className={`w-2.5 h-2.5 rounded-full ${getStatusDotColor(cust.status)}`} />
-                    <span className="text-sm font-medium text-gray-700">{cust.status}</span>
-                  </div>
-                </td>
+              <td className="px-6 py-4">
+  <div className="flex items-center gap-1.5">
+    <span
+      className={`w-2.5 h-2.5 rounded-full ${getStatusDotColor(cust.status).dot}`}
+    />
+    <span
+      className={`text-sm font-medium ${getStatusDotColor(cust.status).text}`}
+    >
+      {cust.status}
+    </span>
+  </div>
+</td>
                 <td className="px-6 py-4 text-center">
-                  <button className="text-gray-400 hover:text-gray-600 p-1.5 rounded-full hover:bg-gray-100 transition">
+                  <button className="text-black hover:text-gray-600 p-1.5 rounded-full hover:bg-gray-100 transition">
                     <MoreVertical className="w-4 h-4" />
                   </button>
                 </td>
@@ -206,32 +248,32 @@ export function CustomersTable() {
       </div>
 
       {/* Pagination */}
-      <div className="p-6 flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-gray-100 text-sm text-gray-500">
+      <div className="p-6 flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-[#D9D9D9] text-[16px] text-black/70">
         <div>
-          Results: <span className="font-semibold text-gray-700">{paginatedCustomers.length.toString().padStart(2, '0')}</span> Out Of <span className="font-semibold text-gray-700">{filteredCustomers.length}</span>
+          Results: <span className=" text-black/70">{paginatedCustomers.length.toString().padStart(2, '0')}</span> Out Of <span className=" text-black/70">{filteredCustomers.length}</span>
         </div>
 
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="w-8 h-8 flex items-center justify-center border border-gray-200 rounded-lg text-gray-600 disabled:opacity-40 hover:bg-gray-50 transition"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          
-          <span className="w-8 h-8 flex items-center justify-center border border-blue-500 bg-blue-50/10 text-blue-600 font-semibold rounded-lg">
-            {currentPage}
-          </span>
-
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="w-8 h-8 flex items-center justify-center border border-gray-200 rounded-lg text-gray-600 disabled:opacity-40 hover:bg-gray-50 transition"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
+  <div className="flex gap-1 items-center">
+            <button
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+           <button
+  className="w-[48px] h-[51px] flex items-center justify-center rounded-[8px] border-2 border-[#E0E0E0] text-black bg-white font-semibold"
+>
+  {currentPage}
+</button>
+            <button
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
       </div>
     </div>
   );

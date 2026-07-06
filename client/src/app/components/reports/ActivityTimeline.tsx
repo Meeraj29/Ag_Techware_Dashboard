@@ -4,7 +4,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { ReportsState, TimelineActivity } from '../../types/reports';
 import { Check, CloudUpload, AlertTriangle } from 'lucide-react';
-
+import Image from 'next/image';
 export function ActivityTimeline() {
   const activities = useSelector((state: { reports: ReportsState }) => state.reports.activityTimeline);
 
@@ -14,40 +14,38 @@ export function ActivityTimeline() {
     switch (type) {
       case 'success':
         return (
-          <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center shrink-0 z-10 border-2 border-white">
-            <Check size={14} className="text-green-600" />
-          </div>
+<div className="mt-8">
+<Image src="/shipment.svg" alt="success" width={32} height={32} />
+</div>
         );
       case 'info':
         return (
-          <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 z-10 border-2 border-white">
-            <CloudUpload size={14} className="text-blue-600" />
+          <div className='mt-8'>
+          <Image src="/export.svg" alt="success" width={32} height={32} />
           </div>
         );
       case 'warning':
         return (
-          <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center shrink-0 z-10 border-2 border-white">
-            <AlertTriangle size={14} className="text-orange-500" />
-          </div>
+          <Image src="/alert.svg" alt="success" width={32} height={32} />
+
         );
     }
   };
 
   return (
-    <div className="bg-white rounded-[24px] border border-gray-200 p-6 shadow-sm h-full flex flex-col">
-      <h2 className="font-bold text-lg text-gray-800 mb-6">Real-time Activity Timeline</h2>
-      
-      <div className="relative flex-1 overflow-y-auto pr-2 custom-scrollbar">
-        {/* Continuous vertical line */}
-        <div className="absolute left-4 top-4 bottom-4 w-px bg-gray-100 z-0"></div>
+    <div className="bg-white rounded-[24px] border border-gray-200 p-6 shadow-sm min-h-[350px] lg:h-[450px] flex flex-col">
+      <h2 className="font-semibold text-[20px] text-[#0F172A] mb-6">Real-time Activity Timeline</h2>
 
+      <div className="relative flex-1 overflow-y-auto pr-2 scrollbar-hide pt-4">
         <div className="flex flex-col gap-6 relative">
           {activities.map((activity, index) => (
-            <div key={activity.id} className="flex gap-4">
-              {getIcon(activity.type)}
-              <div className="pt-1.5 pb-2">
-                <h4 className="font-bold text-sm text-gray-800 leading-none mb-1.5">{activity.title}</h4>
-                <p className="text-xs text-gray-500">{activity.description}</p>
+            <div key={activity.id} className="flex gap-4 items-center">
+              <div className="relative z-10 bg-white rounded-full flex items-center justify-center w-8 h-8 shrink-0">
+                {getIcon(activity.type)}
+              </div>
+              <div className="flex flex-col">
+                <h4 className="font-semibold text-[15px] text-[#191B24] leading-tight mb-0.5">{activity.title}</h4>
+                <p className="text-[13px] text-[#808080] leading-tight">{activity.description}</p>
               </div>
             </div>
           ))}
