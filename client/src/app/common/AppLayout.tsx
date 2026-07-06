@@ -1,8 +1,17 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import SideBar from "./SideBar";
 import NavBar from "./NavBar";
 import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
+
+/**
+ * Routes that should render as full-page (no sidebar).
+ * Sidebar is hidden and content spans full width.
+ */
+const FULL_PAGE_ROUTES = [
+  "/dashboard/customers/create",
+];
 
 export default function AppLayout({
   children,
@@ -11,14 +20,29 @@ export default function AppLayout({
   children: React.ReactNode;
   defaultCollapsed?: boolean;
 }) {
+  const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
+
+  const isFullPage = FULL_PAGE_ROUTES.some((route) => pathname.startsWith(route));
 
   const toggleCollapse = () => {
     const newState = !isCollapsed;
     setIsCollapsed(newState);
-    document.cookie = `agtech_sidebar_collapsed=${newState}; path=/; max-age=31536000`; // 1 year
+    document.cookie = `agtech_sidebar_collapsed=${newState}; path=/; max-age=31536000`;
   };
+
+  if (isFullPage) {
+    return (
+      <div className="flex h-screen flex-col bg-white">
+        {/* NavBar only – no sidebar, logo shown in navbar */}
+        <NavBar showLogo={true} />
+        <main className="flex-1 overflow-auto">
+          {children}
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen bg-white">
@@ -32,8 +56,9 @@ export default function AppLayout({
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 transform bg-white transition-all duration-300 ease-in-out lg:relative lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } w-64 ${isCollapsed ? "lg:w-20" : "lg:w-64"}`}
+        className={`fixed inset-y-0 left-0 z-50 transform bg-white transition-all duration-300 ease-in-out lg:relative lg:translate-x-0 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } w-64 ${isCollapsed ? "lg:w-20" : "lg:w-64"}`}
       >
         <SideBar
           onClose={() => setSidebarOpen(false)}

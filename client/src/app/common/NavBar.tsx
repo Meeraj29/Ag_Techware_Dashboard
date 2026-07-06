@@ -1,16 +1,38 @@
+import Image from "next/image";
 import { Search, Settings, Bell, Menu } from "lucide-react";
+import agtechLogo from "../assets/Logo/agtechlogo.svg";
 
-export default function NavBar({ onMenuClick }: { onMenuClick?: () => void }) {
+export default function NavBar({
+  onMenuClick,
+  showLogo = false,
+}: {
+  onMenuClick?: () => void;
+  showLogo?: boolean;
+}) {
   return (
     <header className="flex h-20 shrink-0 items-center justify-between border-b border-gray-200 bg-white shadow-lg px-4 lg:px-8 z-10 relative">
-      {/* Left side: Mobile menu toggle + Search */}
+      {/* Left side: Logo (full-page only) + Mobile menu toggle + Search */}
       <div className="flex items-center flex-1 gap-4">
-        <button
-          onClick={onMenuClick}
-          className="lg:hidden rounded-md p-2 text-gray-500 hover:bg-gray-100"
-        >
-          <Menu className="h-6 w-6" />
-        </button>
+        {/* Mobile hamburger (hidden on full-page routes) */}
+        {!showLogo && (
+          <button
+            onClick={onMenuClick}
+            className="lg:hidden rounded-md p-2 text-gray-500 hover:bg-gray-100"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        )}
+
+        {/* AG Techware logo – shown in full-page (no-sidebar) mode */}
+        {showLogo && (
+          <Image
+            src={agtechLogo}
+            alt="AG Techware Logo"
+            width={140}
+            height={32}
+            className="h-8 w-auto mr-4"
+          />
+        )}
 
         <div className="relative w-full max-w-md lg:max-w-xl">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -19,7 +41,7 @@ export default function NavBar({ onMenuClick }: { onMenuClick?: () => void }) {
           <input
             type="text"
             className="block w-full rounded-full border border-gray-200 bg-gray-50 py-2 sm:py-2.5 pl-9 sm:pl-10 pr-4 text-[13px] sm:text-sm text-gray-900 placeholder:text-gray-500 focus:border-primary focus:bg-white focus:outline-none focus:ring-1 focus:ring-primary transition-all"
-            placeholder="Search shipments, jobs..."
+            placeholder="Global search shipments, jobs or docs..."
           />
         </div>
       </div>
@@ -46,4 +68,4 @@ export default function NavBar({ onMenuClick }: { onMenuClick?: () => void }) {
       </div>
     </header>
   );
-}
+}

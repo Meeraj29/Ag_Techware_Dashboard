@@ -21,7 +21,7 @@ export default function SideBar({
         <span className={`text-xl font-extrabold text-primary italic tracking-tight ${isCollapsed ? 'hidden lg:block' : 'hidden'}`}>
           AG
         </span>
-        <Image src={agtechLogo} alt="AG Techware Logo" className={`h-8 w-auto min-w-[120px] ${isCollapsed ? 'lg:hidden' : ''}`} />
+        <Image src={agtechLogo} alt="AG Techware Logo" className={`h-8 w-auto min-w-30 ${isCollapsed ? 'lg:hidden' : ''}`} />
       </div>
 
       {/* Nav Links */}
@@ -38,7 +38,9 @@ export default function SideBar({
             )}
             <ul className={`space-y-1 px-4 ${isCollapsed ? 'lg:px-3' : ''}`}>
               {section.items.map((item) => {
-                const isActive = pathname === item.href || (pathname === '/' && item.href === '/');
+                const isActive = item.href === '/'
+                  ? pathname === '/'
+                  : pathname === item.href || pathname.startsWith(`${item.href}/`);
                 const Icon = item.icon;
                 return (
                   <li key={item.name}>
