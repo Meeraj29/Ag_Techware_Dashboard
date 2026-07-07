@@ -27,27 +27,27 @@ export default function ClearanceTable() {
 		switch (status) {
 			case "Under Review":
 				return (
-					<span className="flex items-center gap-1.5 text-xs font-medium text-[#F59E0B]">
+					<span className="flex items-center gap-1.5 text-base font-medium text-[#F59E0B]">
 						<span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></span>Under
 						Review
 					</span>
 				);
 			case "Pending":
 				return (
-					<span className="flex items-center gap-1.5 text-xs font-medium text-[#2563EB]">
+					<span className="flex items-center gap-1.5 text-base font-medium text-[#2563EB]">
 						<span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"></span>
 						Pending
 					</span>
 				);
 			case "Hold":
 				return (
-					<span className="flex items-center gap-1.5 text-xs font-medium text-[#B91C1C]">
+					<span className="flex items-center gap-1.5 text-base font-medium text-[#B91C1C]">
 						<span className="w-1.5 h-1.5 rounded-full bg-[#B91C1C]"></span>Hold
 					</span>
 				);
 			case "Approved":
 				return (
-					<span className="flex items-center gap-1.5 text-xs font-medium text-[#047857]">
+					<span className="flex items-center gap-1.5 text-base font-medium text-[#047857]">
 						<span className="w-1.5 h-1.5 rounded-full bg-[#047857]"></span>
 						Approved
 					</span>
@@ -58,13 +58,13 @@ export default function ClearanceTable() {
 	};
 
 	const getSlaTimerStyle = (timer: string, status: string) => {
-		if (timer === "Expired") return "text-red-500 font-medium";
-		if (timer === "Completed") return "text-green-500 font-medium";
+		if (timer === "Expired") return "text-red-500  text-base font-medium";
+		if (timer === "Completed") return "text-green-500 text-base font-medium";
 		if (timer.startsWith("-"))
-			return "text-red-500 font-medium flex items-center gap-1";
+			return "text-red-500 font-medium text-base flex items-center gap-1";
 		if (status === "Under Review")
-			return "text-red-500 font-medium flex items-center gap-1"; // Matching screenshot color
-		return "text-gray-600 font-medium flex items-center gap-1";
+			return "text-red-500 font-medium text-base flex items-center gap-1"; // Matching screenshot color
+		return "text-gray-600 font-medium text-base flex items-center gap-1";
 	};
 
 	return (
@@ -72,31 +72,31 @@ export default function ClearanceTable() {
 			<table className="w-full text-left border-collapse">
 				<thead>
 					<tr className="bg-[#F8F9FA] border-y border-gray-100">
-						<th className="px-6 py-4 text-xs font-bold text-gray-900">
+						<th className="px-6 py-4 text-base font-medium text-black">
 							Job ID
 						</th>
-						<th className="px-6 py-4 text-xs font-bold text-gray-900">
+						<th className="px-6 py-4 text-base font-medium text-black">
 							Customer
 						</th>
-						<th className="px-6 py-4 text-xs font-bold text-gray-900">Type</th>
-						<th className="px-6 py-4 text-xs font-bold text-gray-900">Port</th>
+						<th className="px-6 py-4 text-base font-medium text-black">Type</th>
+						<th className="px-6 py-4 text-base font-medium text-black">Port</th>
 						{primaryTab !== "Alerts" && (
-							<th className="px-6 py-4 text-xs font-bold text-gray-900">
+							<th className="px-6 py-4 text-base font-medium text-black">
 								Stage
 							</th>
 						)}
-						<th className="px-6 py-4 text-xs font-bold text-gray-900">
+						<th className="px-6 py-4 text-base font-medium text-black">
 							Status
 						</th>
 						{primaryTab === "Alerts" && (
-							<th className="px-6 py-4 text-xs font-bold text-gray-900">
+							<th className="px-6 py-4 text-base font-medium text-black">
 								Alert Type
 							</th>
 						)}
-						<th className="px-6 py-4 text-xs font-bold text-gray-900">
+						<th className="px-6 py-4 text-base font-medium text-black">
 							Sla Timer
 						</th>
-						<th className="px-6 py-4 text-xs font-bold text-gray-900 text-center">
+						<th className="px-6 py-4 text-base font-medium text-black text-center">
 							Actions
 						</th>
 					</tr>
@@ -124,11 +124,10 @@ export default function ClearanceTable() {
 							</td>
 							<td className="px-6 py-4">
 								<span
-									className={`inline-flex items-center gap-1.5 px-2.5 py-2 rounded-full text-sm font-medium ${
-										job.type === "Export"
-											? "bg-[#3525CD4D] text-[#3525CD]"
-											: "bg-[#0548904D] text-[#054890]"
-									}`}
+									className={`inline-flex items-center gap-1.5 px-2.5 py-2 rounded-full text-sm font-medium ${job.type === "Export"
+										? "bg-[#3525CD4D] text-[#3525CD]"
+										: "bg-[#0548904D] text-[#054890]"
+										}`}
 								>
 									{job.type === "Export" ? (
 										<Ship className="w-3 h-3" />
@@ -166,7 +165,7 @@ export default function ClearanceTable() {
 
 							<td className="px-6 py-4">
 								<span
-									className={`text-xs ${getSlaTimerStyle(job.slaTimer, job.status)}`}
+									className={`text-base ${getSlaTimerStyle(job.slaTimer, job.status)}`}
 								>
 									{job.slaTimer !== "Expired" &&
 										job.slaTimer !== "Completed" &&
