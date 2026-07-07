@@ -9,7 +9,7 @@ function ParameterBox({ label, value }: { label: string; value: string }) {
 
 export default function ShipmentParameters() {
 	return (
-		<div className="bg-white rounded-3xl p-8">
+		<div className="bg-white rounded-3xl p-4 md:p-8">
 			<h3 className="text-gray-900 font-medium text-base mb-4">
 				Shipment Parameters
 			</h3>
