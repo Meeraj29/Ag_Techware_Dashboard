@@ -1,6 +1,6 @@
 export default function ClientDetails() {
 	return (
-		<div className="bg-white rounded-3xl p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+		<div className="bg-white rounded-3xl p-4 md:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 			{/* Client Details Section */}
 			<div className="flex-1">
 				<h3 className="text-[#075FB7] text-[13px] font-semibold mb-3">
