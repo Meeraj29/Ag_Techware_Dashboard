@@ -112,7 +112,7 @@ export function CreateCustomerAddress() {
 				/>
 
 				<div className="flex flex-col gap-1.5 justify-end">
-					<div className="flex items-center gap-6 py-2.5">
+					<div className="flex flex-wrap items-center gap-6 py-2.5">
 						<label className="flex items-center gap-2 cursor-pointer text-[13px] text-gray-700">
 							<input
 								type="radio"

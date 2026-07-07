@@ -143,7 +143,7 @@ export default function CreateCustomerPage() {
 	return (
 		<div className="min-h-full bg-gray-50/50">
 			{/* Top Bar */}
-			<div className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200">
+			<div className="flex flex-col sm:flex-row sm:items-center justify-between px-6 py-4 bg-white border-b border-gray-200 gap-4">
 				<div className="flex items-center gap-3">
 					<button
 						onClick={() => router.back()}
@@ -155,7 +155,7 @@ export default function CreateCustomerPage() {
 						Add Customer Details
 					</h1>
 				</div>
-				<div className="flex items-center gap-3">
+				<div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
 					<button
 						onClick={() => router.back()}
 						className="px-5 py-2 rounded-[8px] border border-[#DB4437] text-[#DB4437] text-[13px] font-bold hover:bg-red-50 transition"
@@ -176,13 +176,13 @@ export default function CreateCustomerPage() {
 
 			<div className="p-6">
 				{/* Tabs */}
-				<div className="border-b border-gray-200 mb-8 overflow-x-auto scrollbar-hide">
-					<div className="flex gap-0 min-w-max">
+				<div className="border-b border-gray-200 mb-8 overflow-x-auto scrollbar-hide -mx-6 px-6">
+					<div className="flex gap-6 min-w-max">
 						{TABS.map((tab) => (
 							<button
 								key={tab}
 								onClick={() => setActiveTab(tab)}
-								className={`px-5 py-3 text-[14px] font-medium transition-all whitespace-nowrap border-b-2 ${
+								className={`pb-3 pt-3 text-[14px] font-medium transition-all whitespace-nowrap border-b-2 ${
 									activeTab === tab
 										? "border-primary text-primary"
 										: "border-transparent text-gray-500 hover:text-gray-800"
@@ -247,7 +247,7 @@ export default function CreateCustomerPage() {
 						</div>
 
 						{/* Checkboxes & Toggles */}
-						<div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4">
+						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4">
 							<CheckboxField label="Is Parent Company" id="is-parent-1" />
 							<CheckboxField label="SEZ" id="sez" />
 							<CheckboxField label="Is Registered Company" id="is-registered" />

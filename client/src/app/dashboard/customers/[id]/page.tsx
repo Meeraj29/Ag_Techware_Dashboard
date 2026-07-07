@@ -44,28 +44,23 @@ export default function CustomerDetailPage() {
 	}
 
 	return (
-		<div className="p-4 lg:p-8 bg-gray-50/50 min-h-full">
+		<div className="p-4 lg:p-8 bg-gray-50/50 min-h-full w-full max-w-full overflow-x-hidden">
 			<CustomerDetailHeader customerId={customerId} />
 			<CustomerDetailStats customerId={customerId} />
 			<CustomerDetailTabs />
 
 			{activeTab === "Overview" && (
-				<div className="flex flex-col gap-6">
-					<div className="flex flex-col lg:flex-row gap-6">
-						<div className="flex-1">
-							<EntityInformation customerId={customerId} />
-						</div>
-						<div className="w-full lg:w-[320px] shrink-0">
-							<AccountHealth customerId={customerId} />
-						</div>
+				<div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
+					{/* Left Column */}
+					<div className="flex flex-col gap-6 min-w-0">
+						<EntityInformation customerId={customerId} />
+						<OperationalTimeline customerId={customerId} />
 					</div>
-					<div className="flex flex-col lg:flex-row gap-6">
-						<div className="flex-1">
-							<OperationalTimeline customerId={customerId} />
-						</div>
-						<div className="w-full lg:w-[320px] shrink-0">
-							<InternalNotes customerId={customerId} />
-						</div>
+
+					{/* Right Column */}
+					<div className="flex flex-col gap-6">
+						<AccountHealth customerId={customerId} />
+						<InternalNotes customerId={customerId} />
 					</div>
 				</div>
 			)}

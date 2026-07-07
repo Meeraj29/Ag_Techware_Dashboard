@@ -42,7 +42,7 @@ export function RecentActivity() {
 				</h2>
 				<button className="text-black">⋮</button>
 			</div>
-			<div className="flex flex-col gap-5 flex-1 overflow-y-auto pr-1">
+			<div className="flex flex-col gap-5 flex-1 overflow-y-auto pr-1 scrollbar-hide">
 				{activities.map((activity: Activity) => {
 					const markerStyles = getActivityMarkerStyles(activity.type);
 					return (

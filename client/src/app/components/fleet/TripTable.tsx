@@ -89,14 +89,14 @@ export default function TripTable() {
                 </td>
                 <td className="py-3 px-4 whitespace-nowrap">
                   <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${trip.status === "Active" ? "bg-[#054B94]/13 text-[#004AC6]" :
-                      trip.status === "Delayed" ? "bg-[#BA1A1A]/13 text-[#BA1A1A]" :
-                        trip.status === "Planned" ? "bg-[#515F74]/13 text-[#515F74]" :
-                          "bg-[#15803D]/13 text-[#15803D]"
+                    trip.status === "Delayed" ? "bg-[#BA1A1A]/13 text-[#BA1A1A]" :
+                      trip.status === "Planned" ? "bg-[#515F74]/13 text-[#515F74]" :
+                        "bg-[#15803D]/13 text-[#15803D]"
                     }`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${trip.status === "Active" ? "bg-[#004AC6]" :
-                        trip.status === "Delayed" ? "bg-[#BA1A1A]" :
-                          trip.status === "Planned" ? "bg-[#515F74]" :
-                            "bg-[#15803D]"
+                      trip.status === "Delayed" ? "bg-[#BA1A1A]" :
+                        trip.status === "Planned" ? "bg-[#515F74]" :
+                          "bg-[#15803D]"
                       }`} />
                     {trip.status}
                   </span>
@@ -138,8 +138,8 @@ export default function TripTable() {
                 key={page}
                 onClick={() => setCurrentPage(page)}
                 className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${page === currentPage
-                    ? 'border-2 border-[#E0E0E0] text-black bg-white font-semibold'
-                    : 'border border-transparent text-gray-500 hover:border-gray-200 hover:text-black'
+                  ? 'border-2 border-[#E0E0E0] text-black bg-white font-semibold'
+                  : 'border border-transparent text-gray-500 hover:border-gray-200 hover:text-black'
                   }`}
               >
                 {page}

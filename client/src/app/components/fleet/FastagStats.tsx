@@ -48,9 +48,9 @@ export default function FastagStats() {
 			</div>
 
 			{/* 3 Metric Cards Row */}
-			<div className="grid gap-4 sm:grid-cols-3">
+			<div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
 				{/* Card 1 – Total FASTag Balance */}
-				<div className="flex justify-between rounded-xl bg-[#F4F4F4] border border-[#EDEDED] p-5 h-[105px]">
+				<div className="flex justify-between gap-2 rounded-xl bg-[#F4F4F4] border border-[#EDEDED] p-5 min-h-[105px]">
 					<div className="flex flex-col justify-between">
 						<div>
 							<p className="text-[16px] font-medium text-black uppercase tracking-wider">
@@ -75,7 +75,7 @@ export default function FastagStats() {
 				</div>
 
 				{/* Card 2 – Monthly Spend */}
-				<div className="flex justify-between rounded-xl bg-[#f8f9fa] border border-gray-100 p-5 h-[105px]">
+				<div className="flex justify-between gap-2 rounded-xl bg-[#f8f9fa] border border-gray-100 p-5 min-h-[105px]">
 					<div className="flex flex-col justify-between">
 						<div>
 							<p className="text-[16px] font-medium text-black uppercase tracking-wider">
@@ -100,7 +100,7 @@ export default function FastagStats() {
 				</div>
 
 				{/* Card 3 – Additional Expenses */}
-				<div className="flex justify-between rounded-xl bg-[#f8f9fa] border border-gray-100 p-5 h-[105px]">
+				<div className="flex justify-between gap-2 rounded-xl bg-[#f8f9fa] border border-gray-100 p-5 min-h-[105px]">
 					<div className="flex flex-col justify-between">
 						<div>
 							<p className="text-[16px] font-medium text-black uppercase tracking-wider">

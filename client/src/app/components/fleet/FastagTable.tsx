@@ -63,8 +63,8 @@ export default function FastagTable() {
                 </td>
                 <td
                   className={`py-3 px-4 font-semibold whitespace-nowrap ${row.isLowBal
-                      ? "text-[#BA1A1A] font-bold"
-                      : "text-[#191B23]"
+                    ? "text-[#BA1A1A] font-bold"
+                    : "text-[#191B23]"
                     }`}
                 >
                   {row.balance}

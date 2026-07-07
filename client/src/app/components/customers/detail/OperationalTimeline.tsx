@@ -32,7 +32,7 @@ export function OperationalTimeline({ customerId }: Props) {
 	return (
 		<div className="bg-white rounded-[20px] border border-gray-200 p-6 flex-1">
 			<div className="flex justify-between items-center mb-6">
-				<h2 className="text-[18px] font-bold text-gray-800">
+				<h2 className="text-[18px] font-bold text-gray-800 ">
 					Operational Timeline
 				</h2>
 				<button className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-[10px] text-[14px] font-semibold hover:bg-[#033a75] transition">
@@ -41,11 +41,11 @@ export function OperationalTimeline({ customerId }: Props) {
 				</button>
 			</div>
 
-			<div className="overflow-x-auto">
+			<div className="overflow-x-auto scrollbar-hide">
 				<table className="w-full text-left text-[14px]">
 					<thead>
 						<tr className="bg-[#F8F9FA] text-gray-500 border-b border-gray-100">
-							<th className="py-4 px-4 font-medium rounded-l-[12px]">
+							<th className="py-4 px-4 font-medium rounded-l-[12px] whitespace-nowrap">
 								Date & Time
 							</th>
 							<th className="py-4 px-4 font-medium">Event Type</th>
@@ -56,12 +56,12 @@ export function OperationalTimeline({ customerId }: Props) {
 					<tbody className="divide-y divide-gray-100">
 						{detail.timeline.map((entry) => (
 							<tr key={entry.id} className="hover:bg-gray-50/50 transition">
-								<td className="py-4 px-4 text-gray-800 font-medium">
+								<td className="py-4 px-4 text-gray-800 font-medium whitespace-nowrap">
 									{entry.dateTime}
 								</td>
-								<td className="py-4 px-4 text-gray-800">{entry.eventType}</td>
-								<td className="py-4 px-4 text-gray-600">{entry.operators}</td>
-								<td className="py-4 px-4">
+								<td className="py-4 px-4 text-gray-800 whitespace-nowrap">{entry.eventType}</td>
+								<td className="py-4 px-4 text-gray-600 whitespace-nowrap">{entry.operators}</td>
+								<td className="py-4 px-4 whitespace-nowrap">
 									<div className="flex items-center gap-2">
 										<div
 											className={`w-1.5 h-1.5 rounded-full ${getStatusColor(entry.status).replace("text-", "bg-")}`}

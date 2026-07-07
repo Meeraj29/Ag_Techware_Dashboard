@@ -4,9 +4,9 @@ import { Search } from "lucide-react";
 
 export default function PurchaseToolbar() {
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pt-2">
-      <div className="flex flex-1 flex-wrap gap-3 items-center max-w-xl">
-        <div className="relative flex-1 min-w-[200px]">
+    <div className="flex items-center justify-between gap-4 w-full pt-2 overflow-x-auto scrollbar-hide">
+      <div className="flex items-center gap-3 flex-1 min-w-max">
+        <div className="relative w-[200px] shrink-0">
           <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <input
             type="text"
@@ -15,16 +15,16 @@ export default function PurchaseToolbar() {
           />
         </div>
 
-        <select className="rounded-[8px] border border-[#EBEBEB] bg-white px-3 py-2.5 text-[14px] font-medium text-black  outline-none">
+        <select className="rounded-[8px] border border-[#EBEBEB] bg-white px-3 py-2.5 text-[14px] font-medium text-black  outline-none shrink-0">
           <option>All Types</option>
         </select>
 
-        <select className="rounded-[8px] border border-[#EBEBEB] bg-white px-3 py-2.5 text-[14px] font-medium text-black  outline-none">
+        <select className="rounded-[8px] border border-[#EBEBEB] bg-white px-3 py-2.5 text-[14px] font-medium text-black  outline-none shrink-0">
           <option>Status: All</option>
         </select>
       </div>
 
-      <div className="flex gap-3 justify-end items-center">
+      <div className="flex items-center gap-3 shrink-0 ml-auto min-w-max">
         <button className="rounded-xl border-2 border-primary bg-white px-6 py-2 text-[16px] font-medium text-primary transition hover:bg-blue-50">
           Export to CSV
         </button>

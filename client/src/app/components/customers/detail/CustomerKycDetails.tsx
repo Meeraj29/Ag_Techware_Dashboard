@@ -157,11 +157,11 @@ export function CustomerKycDetails() {
 
 			<div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6">
 				{/* Completion Documents */}
-				<div className="bg-white rounded-[20px] p-6 border border-gray-200">
+				<div className="bg-white rounded-[20px] p-6 border border-gray-200 min-w-0">
 					<h3 className="font-bold text-[16px] text-gray-800 mb-6">
 						Completion Documents
 					</h3>
-					<div className="overflow-x-auto">
+					<div className="overflow-x-auto scrollbar-hide">
 						<table className="w-full text-left border-collapse min-w-[700px]">
 							<thead>
 								<tr className="bg-[#F8F9FA] border-b border-gray-100">

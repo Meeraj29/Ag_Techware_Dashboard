@@ -114,7 +114,7 @@ export function CustomerDocuments() {
 			{/* Documents + Categories */}
 			<div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6 items-start">
 				{/* Documents Table */}
-				<div className="bg-white border border-gray-200 rounded-[20px] p-6">
+				<div className="bg-white border border-gray-200 rounded-[20px] p-6 min-w-0">
 					<div className="flex items-center gap-3 mb-6">
 						<h3 className="font-bold text-[16px] text-gray-800">Documents</h3>
 						<span className="text-[12px] font-semibold text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">
@@ -122,7 +122,7 @@ export function CustomerDocuments() {
 						</span>
 					</div>
 
-					<div className="overflow-x-auto">
+					<div className="overflow-x-auto scrollbar-hide">
 						<table className="w-full text-left border-collapse min-w-[560px]">
 							<thead>
 								<tr className="bg-[#F8F9FA]">

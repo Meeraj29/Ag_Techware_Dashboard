@@ -231,7 +231,7 @@ export function CustomerCreditControl() {
 			</div>
 
 			{/* Recent Transactions Table */}
-			<div className="bg-white border border-gray-200 rounded-[20px] p-6">
+			<div className="bg-white border border-gray-200 rounded-[20px] p-6 min-w-0">
 				<div className="flex justify-between items-center mb-6">
 					<h3 className="font-bold text-[16px] text-gray-800">
 						Recent Transaction &amp; Credit Events
@@ -242,7 +242,7 @@ export function CustomerCreditControl() {
 					</button>
 				</div>
 
-				<div className="overflow-x-auto">
+				<div className="overflow-x-auto scrollbar-hide">
 					<table className="w-full text-left border-collapse min-w-[640px]">
 						<thead>
 							<tr className="bg-[#F8F9FA]">

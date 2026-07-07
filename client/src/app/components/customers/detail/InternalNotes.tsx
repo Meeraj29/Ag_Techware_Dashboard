@@ -15,14 +15,14 @@ export function InternalNotes({ customerId }: Props) {
 	if (!detail) return null;
 
 	return (
-		<div className="bg-white rounded-[20px] border border-gray-200 p-6 w-full lg:w-[320px] shrink-0 h-full flex flex-col">
+		<div className="bg-white rounded-[20px] border border-gray-200 p-6 w-full lg:w-[320px] shrink-0 flex flex-col">
 			<div className="mb-4">
 				<h2 className="text-[16px] font-bold text-gray-800">
 					Internal Notes ({detail.internalNotes.length})
 				</h2>
 			</div>
 
-			<div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-1">
+			<div className="max-h-[200px] overflow-y-auto scrollbar-hide space-y-4 mb-4 pr-1">
 				{detail.internalNotes.map((note) => (
 					<div key={note.id} className="border-l-2 border-primary pl-3 py-1">
 						<p className="text-[13px] text-gray-800 leading-relaxed font-medium mb-1.5">

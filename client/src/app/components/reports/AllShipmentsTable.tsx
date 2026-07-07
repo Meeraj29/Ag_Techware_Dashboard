@@ -55,8 +55,8 @@ export function AllShipmentsTable() {
 			</div>
 
 			{/* Table */}
-			<div className="overflow-x-auto">
-				<table className="w-full text-left text-[16px] text-gray-600 min-w-[800px]">
+			<div className="overflow-x-auto scrollbar-hide">
+				<table className="w-full text-left text-[16px] text-gray-600 min-w-[800px] ">
 					<thead className="bg-[#F4F4F4] text-black font-medium whitespace-nowrap">
 						<tr>
 							<th className="px-6 py-4">Shipment ID</th>

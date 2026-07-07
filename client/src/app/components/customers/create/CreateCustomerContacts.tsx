@@ -40,7 +40,7 @@ export function CreateCustomerContacts() {
 			</div>
 
 			{/* Table */}
-			<div className="overflow-x-auto">
+			<div className="overflow-x-auto scrollbar-hide">
 				<table className="w-full border-collapse min-w-[700px]">
 					<thead>
 						<tr className="bg-[#F8F9FA] border-b border-gray-100">

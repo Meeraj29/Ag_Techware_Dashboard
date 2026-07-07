@@ -17,12 +17,12 @@ export default function TripToolbar() {
   );
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between w-full bg-white py-2">
+    <div className="flex items-center justify-between gap-4 w-full bg-white py-2 overflow-x-auto scrollbar-hide px-6">
       {/* Left Group: Search Bar and Dropdowns with styling from image_cff4eb.png */}
-      <div className="flex flex-wrap items-center gap-4 flex-1 min-w-0">
+      <div className="flex items-center gap-4 flex-1 min-w-max">
 
         {/* Search Input */}
-        <div className="relative w-full sm:w-[277px] h-[53px] shrink-0">
+        <div className="relative w-[200px] sm:w-[277px] h-[53px] shrink-0">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search className="h-4 w-4 text-gray-400" />
           </div>
@@ -36,7 +36,7 @@ export default function TripToolbar() {
         </div>
 
         {/* Dropdowns with Light Gray Background matching image_cff4eb.png */}
-        <div className="relative h-[53px] flex items-center">
+        <div className="relative h-[53px] flex items-center shrink-0">
           <select
             value={typeFilter}
             onChange={(e) => dispatch(setTypeFilter(e.target.value))}
@@ -51,7 +51,7 @@ export default function TripToolbar() {
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-600 pointer-events-none" />
         </div>
 
-        <div className="relative h-[53px] flex items-center">
+        <div className="relative h-[53px] flex items-center shrink-0">
           <select
             value={statusFilter}
             onChange={(e) => dispatch(setStatusFilter(e.target.value))}
@@ -66,7 +66,7 @@ export default function TripToolbar() {
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-600 pointer-events-none" />
         </div>
 
-        <div className="relative h-[53px] flex items-center">
+        <div className="relative h-[53px] flex items-center shrink-0">
           <select
             value={dateRange}
             onChange={(e) => dispatch(setDateRange(e.target.value))}
@@ -83,7 +83,7 @@ export default function TripToolbar() {
       </div>
 
       {/* Right Group: Action buttons */}
-      <div className="flex items-center gap-3 justify-end shrink-0">
+      <div className="flex items-center gap-3 shrink-0 ml-auto min-w-max">
         <Button
           variant="outline"
           className="rounded-[8px] border-2 border-primary text-primary bg-white px-8 h-[44px] text-[16px] font-semibold"
