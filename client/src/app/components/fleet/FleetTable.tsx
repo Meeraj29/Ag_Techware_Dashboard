@@ -97,13 +97,12 @@ export default function FleetTable() {
                   {renderAssignedDriver(vehicle.assignedDriver)}
                 </td>
                 <td className="py-3 px-4 whitespace-nowrap">
-                  <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-                    vehicle.status === "Available" ? "bg-[#95E58A]/25 text-[#007550]" : 
-                    vehicle.status === "Maintenance" ? "bg-[#FFA000]/70 text-[#915B00]" : 
-                    vehicle.status === "In Transit" ? "bg-[#054B94]/13 text-primary" : 
-                    vehicle.status === "Decommissioned" ? "bg-[#C8C8C8]/25 text-[#5C5C5C]" : 
-                    "bg-gray-100 text-gray-700"
-                  }`}>
+                  <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${vehicle.status === "Available" ? "bg-[#95E58A]/25 text-[#007550]" :
+                      vehicle.status === "Maintenance" ? "bg-[#FFA000]/70 text-[#915B00]" :
+                        vehicle.status === "In Transit" ? "bg-[#054B94]/13 text-primary" :
+                          vehicle.status === "Decommissioned" ? "bg-[#C8C8C8]/25 text-[#5C5C5C]" :
+                            "bg-gray-100 text-gray-700"
+                    }`}>
                     {vehicle.status}
                   </span>
                 </td>
@@ -152,11 +151,10 @@ export default function FleetTable() {
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${
-                  page === currentPage
+                className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${page === currentPage
                     ? 'border-2 border-[#E0E0E0] text-black bg-white font-semibold'
                     : 'border border-transparent text-gray-500 hover:border-gray-200 hover:text-black'
-                }`}
+                  }`}
               >
                 {page}
               </button>

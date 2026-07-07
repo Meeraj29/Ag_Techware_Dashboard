@@ -56,18 +56,16 @@ export default function FastagTable() {
                   {row.plaza}
                 </td>
                 <td
-                  className={`py-3 px-4 font-bold whitespace-nowrap ${
-                    row.isNegative ? "text-[#BA1A1A]" : "text-[#004AC6]"
-                  }`}
+                  className={`py-3 px-4 font-bold whitespace-nowrap ${row.isNegative ? "text-[#BA1A1A]" : "text-[#004AC6]"
+                    }`}
                 >
                   {row.amount}
                 </td>
                 <td
-                  className={`py-3 px-4 font-semibold whitespace-nowrap ${
-                    row.isLowBal
+                  className={`py-3 px-4 font-semibold whitespace-nowrap ${row.isLowBal
                       ? "text-[#BA1A1A] font-bold"
                       : "text-[#191B23]"
-                  }`}
+                    }`}
                 >
                   {row.balance}
                 </td>
@@ -102,34 +100,34 @@ export default function FastagTable() {
             {Math.min(startIndex + itemsPerPage, filteredTransactions.length)} of{" "}
             {filteredTransactions.length} Transactions
           </div>
-        <div className="flex gap-1 items-center">
-          <button
-            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-            disabled={currentPage === 1}
-            className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+          <div className="flex gap-1 items-center">
             <button
-              key={page}
-              onClick={() => setCurrentPage(page)}
-              className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${page === currentPage
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${page === currentPage
                   ? 'border-2 border-[#E0E0E0] text-black bg-white font-semibold'
                   : 'border border-transparent text-gray-500 hover:border-gray-200 hover:text-black'
-                }`}
+                  }`}
+              >
+                {page}
+              </button>
+            ))}
+            <button
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
             >
-              {page}
+              <ChevronRight className="w-4 h-4" />
             </button>
-          ))}
-          <button
-            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-            disabled={currentPage === totalPages}
-            className="w-[48px] h-[51px] flex items-center justify-center border-2 border-primary text-primary rounded-[8px] bg-white transition"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
+          </div>
         </div>
       </div>
     </div>

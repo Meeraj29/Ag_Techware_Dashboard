@@ -59,13 +59,12 @@ export default function PurchaseTable() {
                 <td className="py-3.5 px-4 whitespace-nowrap">
                   {item.tag && (
                     <span
-                      className={`px-2.5 py-1 rounded-full font-medium text-[12px] uppercase ${
-                        item.tag === "Tires"
+                      className={`px-2.5 py-1 rounded-full font-medium text-[12px] uppercase ${item.tag === "Tires"
                           ? "bg-[#054B94]/15 text-primary"
                           : item.tag === "SPARE PARTS"
-                          ? "bg-[#707070]/13 text-[#2E2E2E]"
-                          : "bg-[#FFD7D7] text-[#880000]"
-                      }`}
+                            ? "bg-[#707070]/13 text-[#2E2E2E]"
+                            : "bg-[#FFD7D7] text-[#880000]"
+                        }`}
                     >
                       {item.tag}
                     </span>
@@ -124,11 +123,10 @@ export default function PurchaseTable() {
               <button
                 key={page}
                 onClick={() => setCurrentPage(page)}
-                className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${
-                  page === currentPage
+                className={`w-[48px] h-[51px] flex items-center justify-center rounded-[8px] text-[14px] font-medium transition ${page === currentPage
                     ? "border-2 border-[#E0E0E0] text-black bg-white font-semibold"
                     : "border border-transparent text-gray-500 hover:border-gray-200 hover:text-black"
-                }`}
+                  }`}
               >
                 {page}
               </button>

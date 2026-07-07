@@ -12,13 +12,15 @@ const dateOptions = ["Last 30 Days", "Last 7 Days", "Last 90 Days"];
 
 export default function TripToolbar() {
   const dispatch = useDispatch();
-  const { searchQuery, typeFilter, statusFilter, dateRange } = useSelector((state: RootState) => state.fleet);
+  const { searchQuery, typeFilter, statusFilter, dateRange } = useSelector(
+    (state: RootState) => state.fleet,
+  );
 
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between w-full bg-white py-2">
       {/* Left Group: Search Bar and Dropdowns with styling from image_cff4eb.png */}
       <div className="flex flex-wrap items-center gap-4 flex-1 min-w-0">
-        
+
         {/* Search Input */}
         <div className="relative w-full sm:w-[277px] h-[53px] shrink-0">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -82,14 +84,14 @@ export default function TripToolbar() {
 
       {/* Right Group: Action buttons */}
       <div className="flex items-center gap-3 justify-end shrink-0">
-        <Button 
-          variant="outline" 
+        <Button
+          variant="outline"
           className="rounded-[8px] border-2 border-primary text-primary bg-white px-8 h-[44px] text-[16px] font-semibold"
         >
           Export
         </Button>
-        <Button 
-          variant="gradient" 
+        <Button
+          variant="gradient"
           className="rounded-[8px] bg-linear-to-r from-[#0052D4] via-[#4364F7] to-[#6FB1FC] text-white px-8 h-[44px] text-[16px] font-semibold shadow-sm"
         >
           Create Trip

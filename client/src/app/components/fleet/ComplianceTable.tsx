@@ -2,135 +2,159 @@
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { Eye, RefreshCw, Upload, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+	Eye,
+	RefreshCw,
+	Upload,
+	ChevronLeft,
+	ChevronRight,
+} from "lucide-react";
 
 const STATUS_STYLES: Record<string, string> = {
-  "Expired":      "bg-red-50 text-red-500 border border-red-100",
-  "Expired soon": "bg-orange-50 text-orange-500 border border-orange-100",
-  "Valid":        "bg-emerald-50 text-emerald-600 border border-emerald-100",
+	Expired: "bg-[#FFD7D7] text-[#880000]",
+	"Expired soon": "bg-[#FFE8CC] text-[#B9471E]",
+	Valid: "bg-[#E6F4EA] text-[#137333]",
 };
 
 export default function ComplianceTable() {
-  const { complianceRecords, searchQuery, typeFilter, statusFilter } =
-    useSelector((state: RootState) => state.fleet);
+	const { complianceRecords, searchQuery, typeFilter, statusFilter } =
+		useSelector((state: RootState) => state.fleet);
 
-  const filteredRecords = complianceRecords.filter((record) => {
-    const q = searchQuery.toLowerCase();
-    const matchesSearch =
-      record.vehicle.toLowerCase().includes(q) ||
-      record.docType.toLowerCase().includes(q);
-    const matchesType =
-      typeFilter === "All Types" || typeFilter === "All" || typeFilter === "Doc Type" ||
-      record.docType === typeFilter;
-    const matchesStatus =
-      statusFilter === "Status: All" || statusFilter === "All" ||
-      record.status === statusFilter.replace("Status: ", "");
-    return matchesSearch && matchesType && matchesStatus;
-  });
+	const filteredRecords = complianceRecords.filter((record) => {
+		const q = searchQuery.toLowerCase();
+		const matchesSearch =
+			record.vehicle.toLowerCase().includes(q) ||
+			record.docType.toLowerCase().includes(q);
+		const matchesType =
+			typeFilter === "All Types" ||
+			typeFilter === "All" ||
+			typeFilter === "Doc Type" ||
+			record.docType === typeFilter;
+		const matchesStatus =
+			statusFilter === "Status: All" ||
+			statusFilter === "All" ||
+			record.status === statusFilter.replace("Status: ", "");
+		return matchesSearch && matchesType && matchesStatus;
+	});
 
-  return (
-    <div className="overflow-x-auto pb-4 scrollbar-hide">
-      <div className="min-w-[980px]">
+	return (
+		<div className="overflow-x-auto pb-2 scrollbar-hide">
+			<div className="min-w-full inline-block align-middle">
+				<table className="min-w-full whitespace-nowrap text-left border-collapse">
+					{/* ── Table Header ── */}
+					<thead className="bg-[#F4F4F4] text-sm font-semibold text-[#4F4F4F]">
+						<tr>
+							<th className="py-2.5 px-4 rounded-tl-xl font-medium w-[160px]">Vehicle</th>
+							<th className="py-2.5 px-4 font-medium w-[190px]">Doc Type</th>
+							<th className="py-2.5 px-4 font-medium w-[150px]">Expiry Date</th>
+							<th className="py-2.5 px-4 font-medium w-[150px]">Status</th>
+							<th className="py-2.5 px-4 font-medium w-[160px]">Last Updated</th>
+							<th className="py-2.5 px-4 text-right rounded-tr-xl font-medium w-[130px]">Actions</th>
+						</tr>
+					</thead>
 
-        {/* ── Table Header ── */}
-        <div className="grid grid-cols-[160px_190px_150px_150px_160px_130px] gap-3 py-3 px-4 bg-gray-50 rounded-t-xl text-[11px] font-bold text-gray-500 uppercase tracking-wide items-center">
-          <div>Vehicle</div>
-          <div>Doc Type</div>
-          <div>Expiry Date</div>
-          <div>Status</div>
-          <div>Last Updated</div>
-          <div className="text-right">Actions</div>
-        </div>
+					{/* ── Rows ── */}
+					<tbody className="divide-y divide-gray-100">
+						{filteredRecords.map((record) => (
+							<tr
+								key={record.id}
+								className="text-sm text-gray-600 hover:bg-gray-50/60 transition-colors"
+							>
+								{/* Vehicle */}
+								<td className="py-2.5 px-4 font-medium text-[#3525CD] hover:underline cursor-pointer truncate max-w-[160px]">
+									{record.vehicle}
+								</td>
 
-        {/* ── Rows ── */}
-        <div className="divide-y divide-gray-100">
-          {filteredRecords.map((record) => (
-            <div
-              key={record.id}
-              className="grid grid-cols-[160px_190px_150px_150px_160px_130px] gap-3 py-3.5 px-4 items-center text-xs text-gray-600 hover:bg-gray-50/60 transition-colors"
-            >
-              {/* Vehicle */}
-              <div className="font-bold text-blue-600 hover:underline cursor-pointer truncate">
-                {record.vehicle}
-              </div>
+								{/* Doc Type */}
+								<td className="py-2.5 px-4 font-medium text-[#000000CC] truncate max-w-[190px]">
+									{record.docType}
+								</td>
 
-              {/* Doc Type */}
-              <div className="text-gray-700 font-medium truncate">{record.docType}</div>
+								{/* Expiry Date */}
+								<td
+									className={`py-2.5 px-4 font-medium ${
+										record.status === "Expired" 
+											? "text-[#880000]" 
+											: record.status === "Expired soon" 
+											? "text-[#B9471E]" 
+											: "text-[#000000CC]"
+									}`}
+								>
+									{record.expiryDate}
+								</td>
 
-              {/* Expiry Date — red if overdue */}
-              <div
-                className={`font-medium ${
-                  record.isOverdue ? "text-red-500" : "text-gray-700"
-                }`}
-              >
-                {record.expiryDate}
-              </div>
+								{/* Status pill */}
+								<td className="py-2.5 px-4">
+									<span
+										className={`inline-flex items-center gap-1.5 self-start rounded-full px-2.5 py-1 text-[11px] font-medium uppercase tracking-wide ${
+											STATUS_STYLES[record.status] ?? STATUS_STYLES["Valid"]
+										}`}
+									>
+										<span className="h-1.5 w-1.5 rounded-full bg-current" />
+										{record.status}
+									</span>
+								</td>
 
-              {/* Status pill */}
-              <div>
-                <span
-                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
-                    STATUS_STYLES[record.status] ?? STATUS_STYLES["Valid"]
-                  }`}
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-current" />
-                  {record.status}
-                </span>
-              </div>
+								{/* Last Updated */}
+								<td className="py-2.5 px-4 font-medium text-[#000000CC]">
+									{record.lastUpdated}
+								</td>
 
-              {/* Last Updated */}
-              <div className="text-gray-600 font-medium">{record.lastUpdated}</div>
+								{/* Actions */}
+								<td className="py-2.5 px-4">
+									<div className="flex items-center justify-end gap-2">
+										<button
+											title="View"
+											className="rounded-lg p-2 bg-[#E6E6E6] text-[#000000] hover:bg-[#E5E5E5] transition-colors"
+										>
+											<Eye className="h-[15px] w-[15px]" />
+										</button>
+										<button
+											title="Renew"
+											className="rounded-lg p-2 bg-[#E6E6E6] text-[#000000] hover:bg-[#E5E5E5] transition-colors"
+										>
+											<RefreshCw className="h-[15px] w-[15px]" />
+										</button>
+										<button
+											title="Upload"
+											className="rounded-lg p-2 bg-[#E6E6E6] text-[#000000] hover:bg-[#E5E5E5] transition-colors"
+										>
+											<Upload className="h-[15px] w-[15px]" />
+										</button>
+									</div>
+								</td>
+							</tr>
+						))}
 
-              {/* Actions: View | Renew | Upload */}
-              <div className="flex items-center justify-end gap-1.5">
-                <button
-                  title="View"
-                  className="rounded-lg p-2 bg-[#f5f6f7] text-gray-500 hover:bg-gray-200 transition-colors"
-                >
-                  <Eye className="h-3.5 w-3.5" />
-                </button>
-                <button
-                  title="Renew"
-                  className="rounded-lg p-2 bg-[#f5f6f7] text-gray-500 hover:bg-gray-200 transition-colors"
-                >
-                  <RefreshCw className="h-3.5 w-3.5" />
-                </button>
-                <button
-                  title="Upload"
-                  className="rounded-lg p-2 bg-[#f5f6f7] text-gray-500 hover:bg-gray-200 transition-colors"
-                >
-                  <Upload className="h-3.5 w-3.5" />
-                </button>
-              </div>
-            </div>
-          ))}
+						{filteredRecords.length === 0 && (
+							<tr>
+								<td colSpan={6} className="py-12 text-center text-sm text-gray-400">
+									No documents found matching your filters.
+								</td>
+							</tr>
+						)}
+					</tbody>
+				</table>
 
-          {filteredRecords.length === 0 && (
-            <div className="py-12 text-center text-sm text-gray-400">
-              No documents found matching your filters.
-            </div>
-          )}
-        </div>
-
-        {/* ── Pagination ── */}
-        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs font-medium text-gray-400 px-2">
-          <div>
-            Showing 1–{filteredRecords.length} Of {complianceRecords.length} Documents &amp; Compliance
-          </div>
-          <div className="inline-flex items-center gap-1">
-            <button className="rounded-lg border border-gray-200 p-2 text-gray-400 hover:bg-gray-50 transition-colors">
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <span className="rounded-lg border border-gray-200 px-3 py-2 text-gray-700 bg-gray-50 font-bold">
-              1
-            </span>
-            <button className="rounded-lg border border-gray-200 p-2 text-gray-400 hover:bg-gray-50 transition-colors">
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  );
+				{/* ── Pagination ── */}
+				<div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs font-medium text-gray-400 px-2">
+					<div>
+						Showing 1–{filteredRecords.length} Of {complianceRecords.length}{" "}
+						Documents &amp; Compliance
+					</div>
+					<div className="inline-flex items-center gap-1">
+						<button className="rounded-lg border border-gray-200 p-2 text-gray-400 hover:bg-gray-50 transition-colors">
+							<ChevronLeft className="h-4 w-4" />
+						</button>
+						<span className="rounded-lg border border-gray-200 px-3 py-2 text-gray-700 bg-gray-50 font-bold">
+							1
+						</span>
+						<button className="rounded-lg border border-gray-200 p-2 text-gray-400 hover:bg-gray-50 transition-colors">
+							<ChevronRight className="h-4 w-4" />
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

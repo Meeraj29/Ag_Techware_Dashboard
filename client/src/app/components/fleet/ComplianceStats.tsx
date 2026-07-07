@@ -2,69 +2,82 @@
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { TriangleAlert, CheckCircle2, FileCheck } from "lucide-react";
+import { TriangleAlert, CheckCircle2, FileCheck, TrendingUp } from "lucide-react";
 
 export default function ComplianceStats() {
-  const stats = useSelector((state: RootState) => state.fleet.complianceStats);
+	const stats = useSelector((state: RootState) => state.fleet.complianceStats);
 
-  const cards = [
-    {
-      title: "CRITICAL ATTENTION REQUIRED",
-      value: stats.criticalAttention.value,
-      subtext: stats.criticalAttention.subtext,
-      icon: TriangleAlert,
-      isCritical: stats.criticalAttention.isCritical,
-      trend: stats.criticalAttention.trend,
-    },
-    {
-      title: "ASSECTS HEALTH", // Keeping typo from design (Assects)
-      value: stats.assetsHealth.value,
-      subtext: stats.assetsHealth.subtext,
-      icon: CheckCircle2,
-      isCritical: false,
-      trend: stats.assetsHealth.trend,
-    },
-    {
-      title: "PENDING RENEWAL",
-      value: stats.pendingRenewal.value,
-      subtext: stats.pendingRenewal.subtext,
-      icon: FileCheck,
-      isCritical: false,
-      trend: stats.pendingRenewal.trend,
-    },
-  ];
+	const cards = [
+		{
+			title: "CRITICAL ATTENTION REQUIRED",
+			value: stats.criticalAttention.value,
+			subtext: stats.criticalAttention.subtext,
+			icon: TriangleAlert,
+			cardBg: "bg-[#FFEFEE]",
+			borderColor: "border-[#FFADA4]",
+			iconBg: "bg-[#DADADA]",
+			iconColor: "text-[#93000A]",
+			showTrend: false,
+		},
+		{
+			title: "ASSECTS HEALTH", // Keeping typo from design
+			value: stats.assetsHealth.value,
+			subtext: stats.assetsHealth.subtext,
+			icon: CheckCircle2,
+			cardBg: "bg-[#F4F4F4]",
+			borderColor: "border-[#EDEDED]",
+			iconBg: "bg-[#DADADA]",
+			iconColor: "text-[#33CC16]", // green
+			showTrend: true,
+		},
+		{
+			title: "PENDING RENEWAL",
+			value: stats.pendingRenewal.value.toString().padStart(2, "0"),
+			subtext: stats.pendingRenewal.subtext,
+			icon: FileCheck,
+			cardBg: "bg-[#F4F4F4]",
+			borderColor: "border-[#EDEDED]",
+			iconBg: "bg-[#DADADA]",
+			iconColor: "text-[#7C8EEB]", // blue
+			showTrend: false,
+		},
+	];
 
-  return (
-    <div className="mt-5 grid gap-4 sm:grid-cols-3">
-      {cards.map((card) => {
-        const Icon = card.icon;
-        return (
-          <div 
-            key={card.title} 
-            className={`relative flex justify-between rounded-2xl p-6 h-36 border ${
-              card.isCritical ? "bg-[#fff8f8] border-[#ffe8e8]" : "bg-[#f5f6f7] border-transparent"
-            }`}
-          >
-            <div className="flex flex-col justify-between">
-              <div>
-                <p className="text-[11px] font-bold tracking-wide text-gray-900 uppercase">{card.title}</p>
-                <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 leading-none">{card.value}</p>
-              </div>
-              <p className={`text-[10px] font-medium ${card.trend === "up" ? "text-emerald-600" : "text-gray-500"}`}>
-                {card.subtext}
-              </p>
-            </div>
-            <div className="flex flex-col items-end">
-              <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${
-                card.isCritical ? "bg-[#ffe8e8] text-red-500" : "bg-[#e3e5e8] text-emerald-600"
-              }`}>
-                {/* Note: Third icon is different in design (clipboard check), but standardizing on these for now */}
-                <Icon className={`h-4 w-4 ${card.title === "PENDING RENEWAL" ? "text-blue-500" : ""}`} />
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+	return (
+		<div className="mt-4 grid gap-4 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+			{cards.map((card) => {
+				const Icon = card.icon;
+				return (
+					<div
+						key={card.title}
+						className={`relative flex justify-between rounded-2xl ${card.cardBg} p-3 h-[120px] border ${card.borderColor}`}
+					>
+						<div className="flex flex-col justify-between h-full">
+							<div>
+								<p className="text-sm font-medium text-[#000000] uppercase">
+									{card.title}
+								</p>
+								<p className="mt-2 text-2xl font-semibold tracking-tight text-[#000000] leading-none">
+									{card.value}
+								</p>
+							</div>
+							<div className="flex items-center gap-1">
+								{card.showTrend && (
+									<TrendingUp className="h-3 w-3 text-[#7D2D00]" />
+								)}
+								<p className={`text-xs font-medium ${card.showTrend ? "text-[#7D2D00]" : "text-[#515F74]"}`}>
+									{card.subtext}
+								</p>
+							</div>
+						</div>
+						<div className="flex flex-col items-end">
+							<div className={`flex h-10 w-10 items-center justify-center rounded-xl ${card.iconBg}`}>
+								<Icon className={`h-5 w-5 ${card.iconColor}`} strokeWidth={2.5} />
+							</div>
+						</div>
+					</div>
+				);
+			})}
+		</div>
+	);
 }
