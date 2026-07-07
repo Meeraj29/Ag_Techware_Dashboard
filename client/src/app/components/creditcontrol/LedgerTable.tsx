@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Customer } from "../../types/creditControl";
-import { Search, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, ChevronDown, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import Image from "next/image";
 
 export function LedgerTable() {
@@ -247,7 +247,7 @@ export function LedgerTable() {
 
 								<td className="px-7 py-5 whitespace-nowrap">
 									<button className=" flex items-center justify-center  p-2">
-										<Image width={32} height={32} src="/Eye.svg" alt="View" />
+										<Eye className="w-6 h-6 text-gray-600" />
 									</button>
 								</td>
 							</tr>
