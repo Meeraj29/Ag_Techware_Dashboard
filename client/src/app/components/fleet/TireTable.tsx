@@ -5,9 +5,9 @@ import { RootState } from "../../redux/store";
 import { Eye, FileText, ChevronLeft, ChevronRight } from "lucide-react";
 
 const STATUS_STYLES: Record<string, string> = {
-	REPLACE: "bg-red-50 text-red-500 border border-red-100",
-	MONITOR: "bg-orange-50 text-orange-500 border border-orange-100",
-	GOOD: "bg-blue-50 text-blue-500 border border-blue-100",
+	REPLACE: "bg-[#FFD7D7] text-[#880000]",
+	MONITOR: "bg-[#FFE8CC] text-[#B9471E]",
+	GOOD: "bg-[#D6E4FF] text-[#2F54EB]",
 };
 
 export default function TireTable() {
@@ -33,94 +33,106 @@ export default function TireTable() {
 	});
 
 	return (
-		<div className="overflow-x-auto pb-4 scrollbar-hide">
-			<div className="min-w-[1050px]">
-				{/* ── Table Header ── */}
-				<div className="grid grid-cols-[160px_150px_170px_120px_120px_130px_110px_100px] gap-3 py-3 px-4 bg-gray-50 rounded-t-xl text-[11px] font-bold text-gray-500 uppercase tracking-wide items-center">
-					<div>Vehicle</div>
-					<div>Position</div>
-					<div>Brand</div>
-					<div>Install Date</div>
-					<div>Mileage (KM)</div>
-					<div>Due In</div>
-					<div>Status</div>
-					<div className="text-right">Actions</div>
-				</div>
+		<div className="overflow-x-auto pb-2 scrollbar-hide">
+			<div className="min-w-full inline-block align-middle">
+				<table className="min-w-full whitespace-nowrap text-left border-collapse">
+					{/* ── Table Header ── */}
+					<thead className="bg-[#F4F4F4] text-sm font-semibold text-[#4F4F4F]">
+						<tr>
+							<th className="py-2.5 px-4 rounded-tl-xl font-medium w-[160px]">Vehicle</th>
+							<th className="py-2.5 px-4 font-medium w-[150px]">Position</th>
+							<th className="py-2.5 px-4 font-medium w-[170px]">Brand</th>
+							<th className="py-2.5 px-4 font-medium w-[120px]">Install Date</th>
+							<th className="py-2.5 px-4 font-medium w-[120px]">Mileage (KM)</th>
+							<th className="py-2.5 px-4 font-medium w-[130px]">Due In</th>
+							<th className="py-2.5 px-4 font-medium w-[110px]">Status</th>
+							<th className="py-2.5 px-4 text-right rounded-tr-xl font-medium w-[100px]">Actions</th>
+						</tr>
+					</thead>
 
-				{/* ── Rows ── */}
-				<div className="divide-y divide-gray-100">
-					{filteredRecords.map((record) => (
-						<div
-							key={record.id}
-							className="grid grid-cols-[160px_150px_170px_120px_120px_130px_110px_100px] gap-3 py-3.5 px-4 items-center text-xs text-gray-600 hover:bg-gray-50/60 transition-colors"
-						>
-							{/* Vehicle */}
-							<div className="font-bold text-blue-600 hover:underline cursor-pointer truncate">
-								{record.vehicle}
-							</div>
-
-							{/* Position */}
-							<div className="text-gray-700 truncate">{record.position}</div>
-
-							{/* Brand */}
-							<div className="text-gray-700 truncate">{record.brand}</div>
-
-							{/* Install Date */}
-							<div className="text-gray-600">{record.installDate}</div>
-
-							{/* Mileage */}
-							<div className="text-gray-600">{record.mileage}</div>
-
-							{/* Due In — red if overdue */}
-							<div
-								className={`font-semibold ${
-									record.isOverdue ? "text-red-500" : "text-gray-700"
-								}`}
+					{/* ── Rows ── */}
+					<tbody className="divide-y divide-gray-100">
+						{filteredRecords.map((record) => (
+							<tr
+								key={record.id}
+								className="text-sm text-gray-600 hover:bg-gray-50/60 transition-colors"
 							>
-								{record.dueIn}
-							</div>
+								{/* Vehicle */}
+								<td className="py-2.5 px-4 font-medium text-[#3525CD] hover:underline cursor-pointer truncate max-w-[160px]">
+									{record.vehicle}
+								</td>
 
-							{/* Status pill */}
-							<div>
-								<span
-									className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wide ${
-										STATUS_STYLES[record.status] ?? STATUS_STYLES.GOOD
+								{/* Position */}
+								<td className="py-2.5 px-4 font-medium text-[#000000CC] truncate max-w-[150px]">
+									{record.position}
+								</td>
+
+								{/* Brand */}
+								<td className="py-2.5 px-4 font-medium text-[#000000CC] truncate max-w-[170px]">
+									{record.brand}
+								</td>
+
+								{/* Install Date */}
+								<td className="py-2.5 px-4 text-[#000000CC]">{record.installDate}</td>
+
+								{/* Mileage */}
+								<td className="py-2.5 px-4 text-[#000000CC] font-medium">{record.mileage}</td>
+
+								{/* Due In */}
+								<td
+									className={`py-2.5 px-4 font-medium ${
+										record.isOverdue ? "text-[#880000]" : "text-[#000000CC]"
 									}`}
 								>
-									<span className="h-1.5 w-1.5 rounded-full bg-current" />
-									{record.status}
-								</span>
-							</div>
+									{record.dueIn}
+								</td>
 
-							{/* Actions */}
-							<div className="flex items-center justify-end gap-1.5">
-								<button
-									title="View"
-									className="rounded-lg p-2 bg-[#f5f6f7] text-gray-500 hover:bg-gray-200 transition-colors"
-								>
-									<Eye className="h-3.5 w-3.5" />
-								</button>
-								<button
-									title="Document"
-									className="rounded-lg p-2 bg-[#f5f6f7] text-gray-500 hover:bg-gray-200 transition-colors"
-								>
-									<FileText className="h-3.5 w-3.5" />
-								</button>
-							</div>
-						</div>
-					))}
+								{/* Status pill */}
+								<td className="py-2.5 px-4">
+									<span
+										className={`inline-flex items-center gap-1.5 self-start rounded-full px-2.5 py-1 text-[11px] font-medium uppercase tracking-wide ${
+											STATUS_STYLES[record.status] ?? STATUS_STYLES.GOOD
+										}`}
+									>
+										<span className="h-1.5 w-1.5 rounded-full bg-current" />
+										{record.status}
+									</span>
+								</td>
 
-					{filteredRecords.length === 0 && (
-						<div className="py-12 text-center text-sm text-gray-400">
-							No tire records found matching your filters.
-						</div>
-					)}
-				</div>
+								{/* Actions */}
+								<td className="py-2.5 px-4">
+									<div className="flex items-center justify-end gap-2">
+										<button
+											title="View"
+											className="rounded-lg p-2 bg-[#E6E6E6] text-[#000000] hover:bg-[#E5E5E5] transition-colors"
+										>
+											<Eye className="h-[15px] w-[15px]" />
+										</button>
+										<button
+											title="Document"
+											className="rounded-lg p-2 bg-[#E6E6E6] text-[#000000] hover:bg-[#E5E5E5] transition-colors"
+										>
+											<FileText className="h-[15px] w-[15px]" />
+										</button>
+									</div>
+								</td>
+							</tr>
+						))}
+
+						{filteredRecords.length === 0 && (
+							<tr>
+								<td colSpan={8} className="py-12 text-center text-sm text-gray-400">
+									No tire records found matching your filters.
+								</td>
+							</tr>
+						)}
+					</tbody>
+				</table>
 
 				{/* ── Pagination ── */}
 				<div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs font-medium text-gray-400 px-2">
 					<div>
-						Showing 1–{filteredRecords.length} Of {tireRecords.length} Tier
+						Showing 1–{filteredRecords.length} Of {tireRecords.length} Tire
 						Management
 					</div>
 					<div className="inline-flex items-center gap-1">

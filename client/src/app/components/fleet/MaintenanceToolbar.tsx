@@ -7,72 +7,87 @@ import {
 	setTypeFilter,
 	setStatusFilter,
 } from "../../redux/features/fleetSlice";
-import { Search } from "lucide-react";
-import { Button } from "../../ui/Button";
-
-const typeOptions = ["All Types", "Engine", "Tire", "Oil", "AC", "Brake"];
-const statusOptions = ["Status: All", "Overdue", "In Progress", "Scheduled"];
+import { Search, ChevronDown } from "lucide-react";
+import { useMemo } from "react";
 
 export default function MaintenanceToolbar() {
 	const dispatch = useDispatch();
-	const { searchQuery, typeFilter, statusFilter } = useSelector(
+	const { searchQuery, typeFilter, statusFilter, maintenanceRecords } = useSelector(
 		(state: RootState) => state.fleet,
 	);
 
+	const typeOptions = useMemo(() => {
+		const types = new Set(maintenanceRecords.map((r) => r.serviceType));
+		return ["All Types", ...Array.from(types)];
+	}, [maintenanceRecords]);
+
+	const statusOptions = useMemo(() => {
+		const statuses = new Set(maintenanceRecords.map((r) => r.status));
+		return ["Status: All", ...Array.from(statuses)];
+	}, [maintenanceRecords]);
+
 	return (
-		<div className="flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
-			<div className="flex items-center gap-3 w-full sm:w-auto">
-				<div className="relative w-full sm:w-64">
+		<div className="flex flex-col gap-4 py-5 lg:flex-row lg:items-center lg:justify-between">
+			<div className="grid grid-cols-2 md:grid-cols-3 lg:flex lg:items-center gap-3 w-full lg:w-auto">
+				<div className="relative w-full col-span-2 md:col-span-1 lg:w-64">
 					<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-						<Search className="h-4 w-4 text-gray-400" />
+						<Search className="h-4 w-4 text-gray-500" />
 					</div>
 					<input
 						type="text"
 						value={searchQuery}
 						onChange={(e) => dispatch(setSearchQuery(e.target.value))}
 						placeholder="Global search..."
-						className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2.5 pl-10 pr-4 text-sm text-gray-700 outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
+						className="w-full rounded-xl border border-transparent bg-[#F1F1F1] py-2.5 pl-10 pr-4 text-sm text-[#000000B2] font-regular outline-none transition focus:border-primary focus:bg-white focus:ring-1 focus:ring-primary"
 					/>
 				</div>
 
-				<select
-					value={typeFilter}
-					onChange={(e) => dispatch(setTypeFilter(e.target.value))}
-					className="rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-				>
-					{typeOptions.map((option) => (
-						<option key={option} value={option}>
-							{option}
-						</option>
-					))}
-				</select>
+				<div className="relative w-full">
+					<select
+						value={typeFilter}
+						onChange={(e) => dispatch(setTypeFilter(e.target.value))}
+						className="appearance-none w-full rounded-md border border-gray-200 bg-white pl-2 py-2 text-sm font-medium text-[#000000] outline-none focus:border-primary focus:ring-1 focus:ring-primary cursor-pointer"
+					>
+						{typeOptions.map((option) => (
+							<option key={option} value={option}>
+								{option}
+							</option>
+						))}
+					</select>
+					<div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+						<ChevronDown className="h-4 w-4 text-gray-700" />
+					</div>
+				</div>
 
-				<select
-					value={statusFilter}
-					onChange={(e) => dispatch(setStatusFilter(e.target.value))}
-					className="rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm text-gray-700 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-				>
-					{statusOptions.map((option) => (
-						<option key={option} value={option}>
-							{option}
-						</option>
-					))}
-				</select>
+				<div className="relative w-full">
+					<select
+						value={statusFilter}
+						onChange={(e) => dispatch(setStatusFilter(e.target.value))}
+						className="appearance-none w-full rounded-md border border-gray-200 bg-white pl-2 pr-8 py-2 text-sm font-medium text-[#000000] outline-none focus:border-primary focus:ring-1 focus:ring-primary cursor-pointer"
+					>
+						{statusOptions.map((option) => (
+							<option key={option} value={option}>
+								{option}
+							</option>
+						))}
+					</select>
+					<div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+						<ChevronDown className="h-4 w-4 text-gray-700" />
+					</div>
+				</div>
 			</div>
 
-			<div className="flex flex-wrap gap-3 justify-end">
-				<Button
-					variant="outline"
-					className="rounded-lg px-5 py-2.5 text-sm font-semibold border-gray-200 text-blue-600 hover:bg-gray-50"
+			<div className="flex flex-wrap gap-3 justify-start lg:justify-end">
+				<button
+					className="rounded-md px-8 py-2 text-sm font-medium border border-[#0c599b] text-[#0c599b] hover:bg-gradiate hover:text-white transition-colors"
 				>
 					Export
-				</Button>
-				<Button
-					variant="gradient"
-					className="rounded-lg px-5 py-2.5 text-sm font-semibold bg-[#0052cc] text-white hover:bg-blue-700"
+				</button>
+				<button
+					className="rounded-md px-6 py-2 text-sm font-medium bg-gradiate text-white hover:bg-[#09477d] transition-colors"
 				>
 					Schedule Service
-				</Button>
+				</button>
 			</div>
 		</div>
 	);

@@ -53,7 +53,7 @@ export default function FleetManagementPage() {
 
 	return (
 		<div className="p-3 sm:p-6 bg-[#f8f9fa] min-h-screen space-y-4 sm:space-y-6">
-			<div className="mx-auto max-w-[1560px] space-y-4 sm:space-y-6">
+			<div className="mx-auto space-y-4 sm:space-y-6">
 				{/* Container 1: Header, Tabs, and Per-tab Stats */}
 				<div className="rounded-2xl sm:rounded-[24px] border border-gray-100 bg-white p-4 sm:p-6 shadow-sm">
 					<FleetHeader variant="main" />
@@ -116,7 +116,7 @@ export default function FleetManagementPage() {
 					activeTab === "Tire Management" ||
 					activeTab === "Document & Compliance" ||
 					activeTab === "Drivers") && (
-					<div className="rounded-2xl sm:rounded-[24px] border border-gray-100 bg-white p-4 sm:p-6 shadow-sm space-y-4">
+					<div className="rounded-2xl sm:rounded-[24px] border border-gray-200 bg-white p-4 sm:p-4 space-y-4">
 						{activeTab === "Vehicles" && (
 							<>
 								<FleetToolbar />

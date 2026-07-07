@@ -10,9 +10,9 @@ import {
 } from "lucide-react";
 
 const STATUS_STYLES: Record<string, string> = {
-	Overdue: "bg-red-50 text-red-500 border border-red-100",
-	"In Progress": "bg-blue-50 text-blue-500 border border-blue-100",
-	Scheduled: "bg-gray-100 text-gray-500 border border-gray-200",
+	Overdue: "bg-[#FFD7D7] text-[#880000]",
+	"In Progress": "bg-[#054B9421] text-primary",
+	Scheduled: "bg-[#EDEDED] text-[#5C5C5C]",
 };
 
 export default function MaintenanceTable() {
@@ -37,89 +37,97 @@ export default function MaintenanceTable() {
 	});
 
 	return (
-		<div className="overflow-x-auto pb-4 scrollbar-hide">
-			<div className="min-w-[1100px]">
-				{/* ── Table Header ── */}
-				<div className="grid grid-cols-[170px_160px_130px_120px_180px_130px_110px_100px] gap-3 py-3 px-4 bg-gray-50 rounded-t-xl text-[11px] font-bold text-gray-500 uppercase tracking-wide items-center">
-					<div>Po Number</div>
-					<div>Vendor</div>
-					<div>Category</div>
-					<div>Amount</div>
-					<div>Status</div>
-					<div>Delivery Date</div>
-					<div>Actions</div>
-					<div className="text-right">Actions</div>
-				</div>
+		<div className="overflow-x-auto pb-2 scrollbar-hide">
+			<div className="min-w-full inline-block align-middle">
+				<table className="min-w-full whitespace-nowrap text-left border-collapse">
+					{/* ── Table Header ── */}
+					<thead className="bg-[#F4F4F4] text-sm font-semibold text-[#4F4F4F]">
+						<tr>
+							<th className="py-2.5 px-4 rounded-tl-xl font-medium">Po Number</th>
+							<th className="py-2.5 px-4 font-medium">Type</th>
+							<th className="py-2.5 px-4 font-medium">Due Date</th>
+							<th className="py-2.5 px-4 font-medium">Odometer</th>
+							<th className="py-2.5 px-4 font-medium">Service Center</th>
+							<th className="py-2.5 px-4 font-medium">Status</th>
+							<th className="py-2.5 px-4 font-medium">Cost</th>
+							<th className="py-2.5 px-4 text-right rounded-tr-xl font-medium">Actions</th>
+						</tr>
+					</thead>
 
-				{/* ── Rows ── */}
-				<div className="divide-y divide-gray-100">
-					{filteredRecords.map((record) => (
-						<div
-							key={record.id}
-							className="grid grid-cols-[170px_160px_130px_120px_180px_130px_110px_100px] gap-3 py-3.5 px-4 items-center text-xs text-gray-600 hover:bg-gray-50/60 transition-colors"
-						>
-							{/* Po Number */}
-							<div className="font-bold text-blue-600 hover:underline cursor-pointer truncate">
-								{record.vehicleNumber}
-							</div>
+					{/* ── Rows ── */}
+					<tbody className="divide-y divide-gray-100">
+						{filteredRecords.map((record) => (
+							<tr
+								key={record.id}
+								className="text-sm text-gray-600 hover:bg-gray-50/60 transition-colors"
+							>
+								{/* Po Number */}
+								<td className="py-2.5 px-4 font-medium text-[#3525CD] hover:underline cursor-pointer truncate max-w-[170px]">
+									{record.vehicleNumber}
+								</td>
 
-							{/* Vendor = serviceType */}
-							<div className="font-medium text-gray-700 truncate">
-								{record.serviceType}
-							</div>
+								{/* Type = serviceType */}
+								<td className="py-2.5 px-4 font-medium text-[#000000CC] truncate max-w-[160px]">
+									{record.serviceType}
+								</td>
 
-							{/* Category = serviceDate */}
-							<div className="text-gray-500">{record.serviceDate}</div>
+								{/* Due Date = serviceDate */}
+								<td className="py-2.5 px-4 text-[#000000CC]">{record.serviceDate}</td>
 
-							{/* Amount = mileage */}
-							<div className="text-gray-600 font-medium">{record.mileage}</div>
+								{/* Odometer = mileage */}
+								<td className="py-2.5 px-4 text-[#000000CC] font-medium">{record.mileage}</td>
 
-							{/* Status = serviceCenter + badge */}
-							<div className="flex flex-col gap-1">
-								<span className="text-gray-700 font-medium truncate text-[11px]">
-									{record.serviceCenter}
-								</span>
-								<span
-									className={`inline-flex items-center gap-1 self-start rounded-full px-2 py-0.5 text-[10px] font-semibold ${
-										STATUS_STYLES[record.status] ?? STATUS_STYLES.Scheduled
-									}`}
-								>
-									<span className="h-1.5 w-1.5 rounded-full bg-current" />
-									{record.status}
-								</span>
-							</div>
+								{/* Status = serviceCenter (Text) */}
+								<td className="py-2.5 px-4 text-[#000000CC]">
+									<span className="truncate max-w-[180px] block">
+										{record.serviceCenter}
+									</span>
+								</td>
 
-							{/* Delivery Date = cost */}
-							<div className="text-gray-900 font-semibold">{record.cost}</div>
+								{/* Status = Badge */}
+								<td className="py-2.5 px-4">
+									<span
+										className={`inline-flex items-center gap-1.5 self-start rounded-full px-2.5 py-1 text-[11px] font-medium ${
+											STATUS_STYLES[record.status] ?? STATUS_STYLES.Scheduled
+										}`}
+									>
+										<span className="h-1.5 w-1.5 rounded-full bg-current" />
+										{record.status}
+									</span>
+								</td>
 
-							{/* Action 1: assign member */}
-							<div className="flex items-center gap-1.5">
-								<button
-									title="Assign Member"
-									className="rounded-lg p-2 bg-[#f5f6f7] text-gray-500 hover:bg-gray-200 transition-colors"
-								>
-									<UserRoundPlus className="h-3.5 w-3.5" />
-								</button>
-							</div>
+								{/* Cost */}
+								<td className="py-2.5 px-4 text-[#000000CC] font-medium">{record.cost}</td>
 
-							{/* Action 2: view document */}
-							<div className="flex items-center justify-end gap-1.5">
-								<button
-									title="View Document"
-									className="rounded-lg p-2 bg-[#f5f6f7] text-gray-500 hover:bg-gray-200 transition-colors"
-								>
-									<FileText className="h-3.5 w-3.5" />
-								</button>
-							</div>
-						</div>
-					))}
+								{/* Actions = Icons */}
+								<td className="py-2.5 px-4">
+									<div className="flex items-center justify-end gap-2">
+										<button
+											title="Assign Member"
+											className="rounded-lg p-2 bg-[#E6E6E6] text-[#000000] hover:bg-[#E5E5E5] transition-colors"
+										>
+											<UserRoundPlus className="h-[15px] w-[15px]" />
+										</button>
+										<button
+											title="View Document"
+											className="rounded-lg p-2 bg-[#E6E6E6] text-[#000000] hover:bg-[#E5E5E5] transition-colors"
+										>
+											<FileText className="h-[15px] w-[15px]" />
+										</button>
+									</div>
+								</td>
+							</tr>
+						))}
 
-					{filteredRecords.length === 0 && (
-						<div className="py-12 text-center text-sm text-gray-400">
-							No maintenance records found matching your filters.
-						</div>
-					)}
-				</div>
+						{filteredRecords.length === 0 && (
+							<tr>
+								<td colSpan={8} className="py-12 text-center text-sm text-gray-400">
+									No maintenance records found matching your filters.
+								</td>
+							</tr>
+						)}
+					</tbody>
+				</table>
 
 				{/* ── Pagination ── */}
 				<div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs font-medium text-gray-400 px-2">
