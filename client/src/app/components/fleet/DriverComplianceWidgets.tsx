@@ -4,39 +4,41 @@ import { CheckSquare, CalendarDays } from "lucide-react";
 
 export default function DriverComplianceWidgets() {
 	return (
-		<div className="grid gap-6 mt-6 md:grid-cols-2">
+		<div className="grid gap-4 mt-4 md:grid-cols-2">
 			{/* Compliance Score Widget */}
-			<div className="rounded-[24px] border border-gray-100 bg-white p-6 shadow-sm flex items-center justify-between">
-				<div className="flex items-center gap-4 w-full">
-					<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+			<div className="rounded-2xl border border-[#EDEDED] bg-white p-4 flex items-center justify-between">
+				<div className="flex items-center gap-4 w-full p-4 bg-[#F8F8F8] rounded-2xl">
+					<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#EDEDF9] text-[#004AC6]">
 						<CheckSquare className="h-5 w-5" />
 					</div>
 					<div className="flex-1">
-						<div className="flex items-center justify-between mb-2">
-							<span className="text-xs font-bold text-gray-900">
+						<div className="flex items-center gap-3 mb-2">
+							<span className="text-sm font-medium text-[#000000]">
 								Compliance Score
 							</span>
-							<span className="text-xs font-extrabold text-blue-600">92%</span>
 						</div>
-						<div className="w-full bg-gray-100 rounded-full h-1.5">
-							<div
-								className="bg-blue-600 h-1.5 rounded-full"
-								style={{ width: "92%" }}
-							></div>
+						<div className="flex items-center gap-3 w-full">
+							<div className="w-full bg-[#E1E2ED] rounded-full h-1.5">
+								<div
+									className="bg-[#004AC6] h-1.5 rounded-full"
+									style={{ width: "92%" }}
+								></div>
+							</div>
+							<span className="text-xs font-bold text-[#004AC6]">92%</span>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			{/* Renewal Queue Widget */}
-			<div className="rounded-[24px] border border-gray-100 bg-white p-6 shadow-sm flex items-center">
-				<div className="flex items-center gap-4">
-					<div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-600">
+			<div className="rounded-2xl border border-[#EDEDED] bg-white p-4 flex items-center justify-between">
+				<div className="flex items-center gap-4 w-full p-4 bg-[#F8F8F8] rounded-2xl">
+					<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FEEBDE] text-[#943700]">
 						<CalendarDays className="h-5 w-5" />
 					</div>
 					<div>
-						<h4 className="text-xs font-bold text-gray-900">Renewal Queue</h4>
-						<p className="text-[10px] text-gray-500 mt-1">
+						<h4 className="text-sm font-medium text-[#000000]">Renewal Queue</h4>
+						<p className="text-[12px] text-[#4A4C4F] font-medium mt-0.5">
 							5 drivers scheduled for medical exam next week.
 						</p>
 					</div>
